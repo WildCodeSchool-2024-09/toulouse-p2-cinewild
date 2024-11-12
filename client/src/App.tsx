@@ -42,7 +42,7 @@ function App() {
         </hgroup>
         <p>Vous avez lu le README du projet ?!!!</p>
         <p>Ouais c'est Radwan Osman</p>
-        <p>Ouais cest cedric</p>
+        <p>Ouais c'est Michel</p>
       </main>
 
       <footer>
