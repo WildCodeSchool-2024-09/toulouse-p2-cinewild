@@ -41,7 +41,7 @@ function App() {
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
         <p>Vous avez lu le README du projet ?!!!</p>
-        <p>Ouais c'est Radwan</p>
+        <p>Ouais c'est Radwan Osman</p>
       </main>
 
       <footer>
