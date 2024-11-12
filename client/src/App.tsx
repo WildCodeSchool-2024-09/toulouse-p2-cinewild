@@ -41,6 +41,7 @@ function App() {
           <p className="block-primary-sub">Votre framework JavaScript</p>
         </hgroup>
         <p>Vous avez lu le README du projet ?!!!</p>
+        <p>ouais c'est radwan</p>
       </main>
 
       <footer>
