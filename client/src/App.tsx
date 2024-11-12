@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <header>
-        <h1 className="logo">OUAIS CEST MICHEL</h1>
+        <h1 className="logo">Ouais C'est Michel</h1>
       </header>
 
       <nav className="navbar">
