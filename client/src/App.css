@@ -143,3 +143,6 @@ footer {
     color: #fff;
   }
 }
+h1 {
+  background-image: linear-gradient(to right, blue, pink);
+}
