@@ -18,7 +18,7 @@ interface Movie {
   vote_count: number;
 }
 
-const apiKey = "a6624acbe4190aa63573701aac791391";
+const apiKey = import.meta.env.VITE_API_KEY;
 
 const SearchBar = () => {
   const [searchText, setSearchText] = useState<string>("");
@@ -26,19 +26,23 @@ const SearchBar = () => {
   const [searchResult, setSearchResult] = useState<Movie[]>([]);
 
   useEffect(() => {
-    searchBarQuery(searchText);
+    if (searchText.trim()) {
+      searchBarQuery(searchText);
+    } else {
+      setSearchResult([]);
+    }
   }, [searchText]);
 
   async function searchBarQuery(search: string) {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?adult=false&api_key=${apiKey}&query=${search}`,
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}`,
       );
       const responseJson = await response.json();
-      const resultSearch = responseJson.results;
-      setSearchResult(resultSearch);
+      setSearchResult(responseJson.results);
     } catch (error) {
       console.error(error);
+      setSearchResult([]);
     }
   }
 
@@ -65,24 +69,21 @@ const SearchBar = () => {
       </div>
       {showSuggestion && (
         <div className="suggestionList">
-          {showSuggestion ? (
-            <ul className="ul-suggestion-list">
-              {searchResult.length > 0 ? (
-                searchResult.slice(0, 5).map((movie) => (
-                  <li className="li-suggestion-list" key={movie.id}>
-                    {movie.title}
-                  </li>
-                ))
-              ) : (
-                <li className="li-suggestion-list">Aucun film trouvé.</li>
-              )}
-            </ul>
-          ) : (
-            ""
-          )}
+          <ul className="ul-suggestion-list">
+            {searchResult && searchResult.length > 0 ? (
+              searchResult.slice(0, 5).map((movie) => (
+                <li className="li-suggestion-list" key={movie.id}>
+                  {movie.title}
+                </li>
+              ))
+            ) : (
+              <li className="li-suggestion-list">Aucun film trouvé.</li>
+            )}
+          </ul>
         </div>
       )}
     </div>
   );
 };
+
 export default SearchBar;
