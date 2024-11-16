@@ -1,0 +1,61 @@
+body {
+  height: 200vh;
+  background: linear-gradient(#090909, #4c4848);
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  padding: 8vw 8vw 3vw 4vw;
+  justify-content: space-between;
+}
+
+.site-title {
+  font-size: 7vw;
+  background: linear-gradient(
+    90deg,
+    #f1370a,
+    #b13929,
+    #851c0e,
+    #b13929,
+    #f1370a
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+.menu-burger-button {
+  cursor: pointer;
+  width: 7vw;
+}
+
+.suggestion-section {
+  padding: 4vw;
+}
+
+.intro-sentence {
+  font-size: 5vw;
+  color: #fbfbfb;
+  span {
+    color: #e44a35;
+  }
+}
+
+.categorie {
+  margin-top: 15vw;
+  margin-left: 5vw;
+}
+
+.categorie-title {
+  color: white;
+}
+
+@media screen and (width > 600px) {
+  .site-title {
+    font-size: 5vw;
+  }
+
+  .menu-burger-button {
+    width: 5vw;
+  }
+}
