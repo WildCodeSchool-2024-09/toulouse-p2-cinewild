@@ -1,0 +1,52 @@
+
+
+.modale {
+  z-index: 4;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  position: absolute;
+  width: 92%;
+  margin-top: 20px;
+  border-radius: 14px;
+}
+
+.modale > img {
+  width: 80%;
+}
+.section {
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: 20% 20% 20%;
+ row-gap: 20px;
+
+}
+
+.buttonf {
+  background-color: #e44a35;
+  color: #dbd8d8;
+  margin-bottom: 20px;
+}
+.date{
+    grid-row: 1;
+    grid-column: 1;
+}
+.origine{
+    grid-row: 1;
+    grid-column: 3;
+}
+.note{
+    grid-row: 2;
+    grid-column: 1;
+}
+.type{
+    grid-row: 2;
+    grid-column: 3;
+}
+.resume{
+    grid-row: 3;
+    grid-column: 1/4;
+}

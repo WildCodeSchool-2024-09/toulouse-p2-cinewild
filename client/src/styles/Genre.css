@@ -1,0 +1,45 @@
+.buttonsg {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: black;
+  padding: 5%;
+  gap: 25px;
+  width: 80%;
+  height: 85%;
+  right: 10px;
+  align-items: center;
+  border-radius: 20px;
+  padding-bottom: 30px;
+  overflow-y: scroll;
+  z-index: 2;
+}
+.buttong {
+  min-height: 45px;
+  width: 95%;
+  background-color: #2e3034;
+  border-radius: 30px;
+  color: #dbd8d8;
+  border: 0px;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.buttong:active {
+  background-color: aqua;
+}
+.return {
+  position: absolute;
+  height: 30px;
+  left: 30px;
+  top: 25px;
+}
+@media (min-width: 1024px) {
+  .buttong:hover {
+    background-color: #dbd8d8;
+  }
+}

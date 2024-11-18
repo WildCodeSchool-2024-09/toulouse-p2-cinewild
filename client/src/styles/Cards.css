@@ -1,0 +1,30 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 300px;
+  position: absolute;
+  gap: 10px;
+}
+
+.picture {
+  width: 180px;
+  
+}
+.title {
+    color: #DBD8D8;
+    margin-top: -8px;
+
+}
+.description {
+    margin-top: -8px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+.types {
+    color: #DBD8D8;
+}
+.time {
+    color: #DBD8D8;
+}
