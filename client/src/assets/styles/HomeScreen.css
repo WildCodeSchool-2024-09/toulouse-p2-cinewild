@@ -1,17 +1,17 @@
 body {
-  height: 200vh;
+  min-height: 100vh;
   background: linear-gradient(#090909, #4c4848);
 }
 
 nav {
   display: flex;
-  flex-direction: row;
   padding: 8vw 8vw 3vw 4vw;
   justify-content: space-between;
+  align-items: center;
 }
 
 .site-title {
-  font-size: 7vw;
+  font-size: 8vw;
   background: linear-gradient(
     90deg,
     #f1370a,
@@ -34,28 +34,65 @@ nav {
 }
 
 .intro-sentence {
-  font-size: 5vw;
+  font-size: 4.5vw;
   color: #fbfbfb;
   span {
     color: #e44a35;
   }
 }
 
-.categorie {
+.tendance {
   margin-top: 15vw;
   margin-left: 5vw;
 }
 
-.categorie-title {
+.tendance-title {
+  font-size: 5vw;
   color: white;
+  margin-bottom: 5vw;
 }
 
-@media screen and (width > 600px) {
+@media screen and (width > 550px) {
+  nav {
+    padding: 4vw 8vw 3vw 4vw;
+  }
+
+  .site-title {
+    font-size: 6vw;
+  }
+
+  .menu-burger-button {
+    width: 5vw;
+  }
+
+  .intro-sentence {
+    font-size: 3vw;
+  }
+
+  .tendance {
+    margin-top: 6vw;
+    margin-left: 5vw;
+  }
+
+  .tendance-title {
+    font-size: 3vw;
+  }
+}
+
+@media screen and (width > 1000px) {
   .site-title {
     font-size: 5vw;
   }
 
   .menu-burger-button {
-    width: 5vw;
+    width: 4vw;
+  }
+
+  .intro-sentence {
+    margin-left: 1vw;
+  }
+
+  .tendance {
+    margin-left: 4vw;
   }
 }

@@ -20,7 +20,7 @@ interface Movie {
 }
 
 export default function HomeScreen() {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [_, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -69,17 +69,8 @@ export default function HomeScreen() {
             Découvrez votre prochain <span>film préféré</span>
           </h2>
         </div>
-        <div className="categorie">
-          <h3 className="categorie-title">Tendances</h3>
-        </div>
-        <div className="films-grid">
-          {movies.map((movie: Movie) => (
-            <img
-              key={movie.id}
-              alt="image-card"
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            />
-          ))}
+        <div className="tendance">
+          <h3 className="tendance-title">Tendances</h3>
         </div>
       </section>
     </>
