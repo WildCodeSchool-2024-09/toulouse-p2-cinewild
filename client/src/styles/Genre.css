@@ -13,6 +13,7 @@
   padding-bottom: 30px;
   overflow-y: scroll;
   z-index: 2;
+  margin-top: 15%;
 }
 .buttong {
   min-height: 45px;
