@@ -8,23 +8,21 @@
 
 .picture {
   width: 180px;
-  
 }
 .title {
-    color: #DBD8D8;
-    margin-top: -8px;
-
+  color: #dbd8d8;
+  margin-top: -8px;
 }
 .description {
-    margin-top: -8px;
+  margin-top: -8px;
   display: flex;
   flex-direction: row;
   gap: 10px;
   margin-bottom: 25px;
 }
 .types {
-    color: #DBD8D8;
+  color: #dbd8d8;
 }
 .time {
-    color: #DBD8D8;
+  color: #dbd8d8;
 }

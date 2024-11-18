@@ -10,11 +10,11 @@ export default function Genre({ isOpen, setIsOpen }: GenreProps) {
     isOpen && (
       <div className="buttonsg">
         <img
-            src="../src/assets/images/return.png"
-            alt="retour"
-            onClick={() => setIsOpen(false)}
-            onKeyDown={() => setIsOpen(false)}
-            className="return"
+          src="../src/assets/images/return.png"
+          alt="retour"
+          onClick={() => setIsOpen(false)}
+          onKeyDown={() => setIsOpen(false)}
+          className="return"
         />
 
         <h2>

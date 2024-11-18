@@ -1,20 +1,20 @@
 import "../styles/Annee.css";
 
 interface AnneeProps {
-    isOpena: boolean;
-    setIsOpena: (open: boolean) => void
+  isOpena: boolean;
+  setIsOpena: (open: boolean) => void;
 }
 
 export default function Annee({ isOpena, setIsOpena }: AnneeProps) {
   return (
     isOpena && (
       <div className="buttonsa">
-             <img
-            src="../src/assets/images/return.png"
-            alt="retour"
-            onClick={() => setIsOpena(false)}
-            onKeyDown={() => setIsOpena(false)}
-            className="return"
+        <img
+          src="../src/assets/images/return.png"
+          alt="retour"
+          onClick={() => setIsOpena(false)}
+          onKeyDown={() => setIsOpena(false)}
+          className="return"
         />
 
         <h2>

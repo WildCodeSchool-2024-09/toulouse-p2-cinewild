@@ -1,7 +1,7 @@
 import "../styles/MenuBurger.css";
 import { useState } from "react";
-import Genre from "./Genre";
 import Annee from "./Annee";
+import Genre from "./Genre";
 
 export default function MenuBurger() {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +74,7 @@ export default function MenuBurger() {
           />
         </button>
       </div>
-      {isOpen && <Genre isOpen={isOpen} setIsOpen={setIsOpen}/>}
+      {isOpen && <Genre isOpen={isOpen} setIsOpen={setIsOpen} />}
       {isOpena && <Annee isOpena={isOpena} setIsOpena={setIsOpena} />}
     </>
   );
