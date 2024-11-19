@@ -1,7 +1,7 @@
 import "../assets/styles/MenuBurger.css";
 import { useState } from "react";
-import Annee from "./Years";
 import Genre from "./Genre";
+import Annee from "./Years";
 
 export default function MenuBurger() {
   const [isOpen, setIsOpen] = useState(false);

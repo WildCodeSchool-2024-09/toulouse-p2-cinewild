@@ -11,20 +11,18 @@ interface GenreItemsProps {
   name: string;
 }
 
-
 export default function Genre({ isOpen, setIsOpen }: GenreProps) {
-
   const apiKey = import.meta.env.VITE_API_KEY;
   const [genreList, setGenreList] = useState<Array<GenreItemsProps>>([]);
-  
+
   async function getGenreList() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`,
       );
-    
+
       const data = await response.json();
-    
+
       const genres = data.genres;
 
       setGenreList(genres);
@@ -32,7 +30,7 @@ export default function Genre({ isOpen, setIsOpen }: GenreProps) {
       console.error("Erreur lors de la récupération des données :", error);
     }
   }
-  
+
   getGenreList();
 
   return (
@@ -58,8 +56,12 @@ export default function Genre({ isOpen, setIsOpen }: GenreProps) {
           Fantastique
         </button>
         {genreList.map((genre) => {
-          return(<button key={genre.id} className="button-genre" type="button">{genre.name}</button>)
-          }) }
+          return (
+            <button key={genre.id} className="button-genre" type="button">
+              {genre.name}
+            </button>
+          );
+        })}
       </div>
     )
   );
