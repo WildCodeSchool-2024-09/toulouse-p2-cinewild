@@ -1,8 +1,8 @@
 import "../assets/styles/HomeScreen.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import FilmSearchBar from "./FilmSearchBar";
 import Background from "./Background";
+import FilmSearchBar from "./FilmSearchBar";
 
 interface Movie {
   adult: boolean;
