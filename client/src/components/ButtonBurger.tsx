@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MenuBurger from "../components/MenuBurger";
-import "../styles/ButtonBurger.css";
+import "../assets/styles/ButtonBurger.css";
 
 export default function ButtonBurger() {
   const [isOpen, setIsOpen] = useState(false);

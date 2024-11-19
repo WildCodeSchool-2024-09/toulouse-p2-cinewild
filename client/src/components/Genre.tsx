@@ -1,14 +1,43 @@
-import "../styles/Genre.css";
+import { useState } from "react";
+import "../assets/styles/Genre.css";
 
 interface GenreProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 }
 
+interface GenreItemsProps {
+  id: number;
+  name: string;
+}
+
+
 export default function Genre({ isOpen, setIsOpen }: GenreProps) {
+
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const [genreList, setGenreList] = useState<Array<GenreItemsProps>>([]);
+  
+  async function getGenreList() {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`
+      );
+    
+      const data = await response.json();
+    
+      const genres = data.genres;
+
+      setGenreList(genres);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données :", error);
+    }
+  }
+  
+  getGenreList();
+
   return (
     isOpen && (
-      <div className="buttonsg">
+      <div className="buttons-genre">
         <img
           src="../src/assets/images/return.png"
           alt="retour"
@@ -25,30 +54,12 @@ export default function Genre({ isOpen, setIsOpen }: GenreProps) {
             alt="genre"
           />
         </h2>
-        <button className="buttong" type="button">
+        <button className="button-genre" type="button">
           Fantastique
         </button>
-        <button className="buttong" type="button">
-          Since-fiction
-        </button>
-        <button className="buttong" type="button">
-          Comédie
-        </button>
-        <button className="buttong" type="button">
-          Romantique
-        </button>
-        <button className="buttong" type="button">
-          Aventure
-        </button>
-        <button className="buttong" type="button">
-          Thriller
-        </button>
-        <button className="buttong" type="button">
-          Horreur
-        </button>
-        <button className="buttong" type="button">
-          Documentaire
-        </button>
+        {genreList.map((genre) => {
+          return(<button key={genre.id} className="button-genre" type="button">{genre.name}</button>)
+          }) }
       </div>
     )
   );

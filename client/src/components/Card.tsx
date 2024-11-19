@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/Card.css";
+import "../assets/styles/Card.css";
 
 export default function Card() {
   const [close, setClose] = useState(true);
@@ -43,7 +43,7 @@ export default function Card() {
             </section>
 
             <button
-              className="buttonf"
+              className="button-close"
               type="button"
               onClick={() => setClose(false)}
               onKeyDown={() => setClose(false)}

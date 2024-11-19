@@ -1,11 +1,11 @@
-import "../styles/MenuBurger.css";
+import "../assets/styles/MenuBurger.css";
 import { useState } from "react";
-import Annee from "./Annee";
+import Annee from "./Years";
 import Genre from "./Genre";
 
 export default function MenuBurger() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isOpena, setIsOpena] = useState(false);
+  const [isOpenYear, setisOpenYear] = useState(false);
   return (
     <>
       <div className="buttons">
@@ -28,7 +28,7 @@ export default function MenuBurger() {
           Nouveautés
           <img
             className="logobutton"
-            src="../src/assets/images/nouveautes.png"
+            src="../src/assets/images/news.png"
             alt="Nouveautés"
           />
         </button>
@@ -37,7 +37,7 @@ export default function MenuBurger() {
           Films à l'affiche
           <img
             className="logobutton"
-            src="../src/assets/images/film-a-laffiche.png"
+            src="../src/assets/images/current.png"
             alt="Films à l'affiche"
           />
         </button>
@@ -46,22 +46,22 @@ export default function MenuBurger() {
           Populaire
           <img
             className="logobutton"
-            src="../src/assets/images/populaire.png"
+            src="../src/assets/images/popular.png"
             alt="Populaire"
           />
         </button>
         <button
           type="button"
-          className={`button ${isOpena ? "open" : ""}`}
-          onClick={() => setIsOpena(!isOpena)}
-          onKeyDown={() => setIsOpena(!isOpena)}
+          className={`button ${isOpenYear ? "open" : ""}`}
+          onClick={() => setisOpenYear(!isOpenYear)}
+          onKeyDown={() => setisOpenYear(!isOpenYear)}
         >
           <div />
           Année
           <img
             className="logobutton"
-            src="../src/assets/images/annee.png"
-            alt="Année"
+            src="../src/assets/images/year.png"
+            alt="year"
           />
         </button>
         <button className="button" type="button">
@@ -69,13 +69,15 @@ export default function MenuBurger() {
           Favoris
           <img
             className="logobutton"
-            src="../src/assets/images/favoris.png"
-            alt="Favoris"
+            src="../src/assets/images/favorite.png"
+            alt="favorite"
           />
         </button>
       </div>
       {isOpen && <Genre isOpen={isOpen} setIsOpen={setIsOpen} />}
-      {isOpena && <Annee isOpena={isOpena} setIsOpena={setIsOpena} />}
+      {isOpen && (
+        <Annee isOpenYear={isOpenYear} setisOpenYear={setisOpenYear} />
+      )}
     </>
   );
 }

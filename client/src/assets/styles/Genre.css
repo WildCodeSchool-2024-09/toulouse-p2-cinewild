@@ -1,4 +1,4 @@
-.buttonsg {
+.buttons-genre {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -15,7 +15,7 @@
   z-index: 2;
   margin-top: 15%;
 }
-.buttong {
+.button-genre {
   min-height: 45px;
   width: 95%;
   background-color: #2e3034;
@@ -30,17 +30,19 @@
   justify-content: space-evenly;
 }
 
-.buttong:active {
+.button-genre:active {
   background-color: aqua;
 }
+
 .return {
   position: absolute;
   height: 30px;
   left: 30px;
   top: 25px;
 }
+
 @media (min-width: 1024px) {
-  .buttong:hover {
+  .button-genre:hover {
     background-color: #dbd8d8;
   }
 }
