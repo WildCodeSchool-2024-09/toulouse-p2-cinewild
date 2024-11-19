@@ -1,0 +1,55 @@
+.buttons-years {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: black;
+  padding: 5%;
+  gap: 25px;
+  width: 80%;
+  height: 85%;
+  right: 10px;
+  align-items: center;
+  border-radius: 20px;
+  padding-bottom: 30px;
+  overflow-y: scroll;
+  scrollbar-color: #1900ff #ff0000;
+  z-index: 2;
+  margin-top: 15%;
+}
+
+.button-years {
+  min-height: 45px;
+  width: 95%;
+  background-color: #2e3034;
+  border-radius: 30px;
+  color: #dbd8d8;
+  border: 0px;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.button-years:active {
+  background-color: aqua;
+}
+
+.year-title-categorie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-year-button {
+  width: 2vw;
+  margin-left: 1vw;
+  margin-block: auto;
+}
+
+@media (min-width: 1024px) {
+  .button-years:hover {
+    background-color: #dbd8d8;
+  }
+}
