@@ -1,6 +1,8 @@
 import "../assets/styles/HomeScreen.css";
 import { useState } from "react";
 import { useEffect } from "react";
+import FilmSearchBar from "./FilmSearchBar";
+import Background from "./Background";
 
 interface Movie {
   adult: boolean;
@@ -68,10 +70,30 @@ export default function HomeScreen() {
           <h2 className="intro-sentence">
             Découvrez votre prochain <span>film préféré</span>
           </h2>
+          <div className="home-searchbar">
+            <FilmSearchBar />
+          </div>
+        </div>
+        <div className="home-searchbar">
+          <FilmSearchBar />
         </div>
         <div className="tendance">
           <h3 className="tendance-title">Tendances</h3>
         </div>
+        {_.map((movie) => {
+          return (
+            <div key={movie.id} className="movie-card">
+              <img
+                className="movie-poster"
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <h3 className="movie-title">{movie.title}</h3>
+              <p className="movie-overview">{movie.overview}</p>
+            </div>
+          );
+        })}
+        <Background />
       </section>
     </>
   );

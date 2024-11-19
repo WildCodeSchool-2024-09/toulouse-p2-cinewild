@@ -1,12 +1,12 @@
 import "./App.css";
 import HomeScreen from "./components/HomeScreen";
 
-function App() {
+const App = () => {
   return (
     <>
       <HomeScreen />
     </>
   );
-}
+};
 
 export default App;

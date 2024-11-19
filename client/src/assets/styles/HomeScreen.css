@@ -41,6 +41,13 @@ nav {
   }
 }
 
+.home-searchbar {
+  width: 80%;
+  margin-block: auto;
+  position: absolute;
+  padding-top: 5vw;
+}
+
 .tendance {
   margin-top: 15vw;
   margin-left: 5vw;

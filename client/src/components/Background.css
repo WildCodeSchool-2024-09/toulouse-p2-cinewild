@@ -1,0 +1,7 @@
+.background {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(18, 42, 255, 0.588);
+  position: fixed;
+  top: 0;
+}
