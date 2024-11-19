@@ -52,9 +52,6 @@ export default function Genre({ isOpen, setIsOpen }: GenreProps) {
             alt="genre"
           />
         </h2>
-        <button className="button-genre" type="button">
-          Fantastique
-        </button>
         {genreList.map((genre) => {
           return (
             <button key={genre.id} className="button-genre" type="button">
