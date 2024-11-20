@@ -12,14 +12,7 @@ nav {
 
 .site-title {
   font-size: 8vw;
-  background: linear-gradient(
-    90deg,
-    #f1370a,
-    #b13929,
-    #851c0e,
-    #b13929,
-    #f1370a
-  );
+  background: linear-gradient(90deg, #ca402e, #72210f, #ca402e);
   background-clip: text;
   color: transparent;
 }
@@ -37,26 +30,29 @@ nav {
   font-size: 4.5vw;
   color: #fbfbfb;
   span {
-    color: #e44a35;
+    color: var(--secondary-color);
   }
 }
 
 .home-searchbar {
-  width: 80%;
-  margin-block: auto;
-  position: absolute;
-  padding-top: 5vw;
-}
-
-.tendance {
-  margin-top: 15vw;
-  margin-left: 5vw;
+  width: 90%;
+  margin: 8vw auto;
 }
 
 .tendance-title {
   font-size: 5vw;
   color: white;
+  margin-left: 5vw;
   margin-bottom: 5vw;
+}
+
+.tendance-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: 0 auto;
+  gap: 1vw;
 }
 
 @media screen and (width > 550px) {

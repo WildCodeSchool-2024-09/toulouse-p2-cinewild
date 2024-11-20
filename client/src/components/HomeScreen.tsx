@@ -1,29 +1,23 @@
 import "../assets/styles/HomeScreen.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import Background from "./Background";
 import FilmSearchBar from "./FilmSearchBar";
+import MiniCard from "./MiniCard";
+import ButtonBurger from "./ButtonBurger";
+import Card from "./Card";
 
 interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
   id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
   title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
+  poster_path: string;
+  genre_ids: number[];
 }
 
 export default function HomeScreen() {
-  const [_, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [showCard, setShowCard] = useState<boolean>(false);
+  const [idMovie, setIdMovie] = useState<number | null>(null);
 
   const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -34,7 +28,7 @@ export default function HomeScreen() {
 
         const randomPage = Math.floor(Math.random() * 499) + 1;
         const response = await fetch(
-          `https://api.themoviedb.org/3/discover/movie?page=${randomPage}&api_key=${apiKey}`,
+          `https://api.themoviedb.org/3/discover/movie?adult=false&page=${randomPage}&api_key=${apiKey}`,
         );
 
         const data = await response.json();
@@ -51,6 +45,28 @@ export default function HomeScreen() {
     getRandomMovies();
   }, []);
 
+  const [genres, setGenres] = useState<{ [key: number]: string }>({});
+
+  useEffect(() => {
+    const fetchGenres = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/genre/movie/list?language=fr&api_key=${apiKey}`,
+        );
+        const data = await response.json();
+        const genreMap: { [key: number]: string } = {};
+        for (const genre of data.genres) {
+          genreMap[genre.id] = genre.name;
+        }
+        setGenres(genreMap);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des genres:", error);
+      }
+    };
+
+    fetchGenres();
+  }, []);
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -59,11 +75,7 @@ export default function HomeScreen() {
     <>
       <nav>
         <h1 className="site-title">CinéWild</h1>
-        <img
-          className="menu-burger-button"
-          src="../src/assets/images/menu-burger.svg"
-          alt="menu-burger-button"
-        />
+        <ButtonBurger />
       </nav>
       <section className="suggestion-section">
         <div className="intro-section">
@@ -74,27 +86,40 @@ export default function HomeScreen() {
             <FilmSearchBar />
           </div>
         </div>
-        <div className="home-searchbar">
-          <FilmSearchBar />
-        </div>
         <div className="tendance">
           <h3 className="tendance-title">Tendances</h3>
         </div>
-        {_.map((movie) => {
-          return (
-            <div key={movie.id} className="movie-card">
-              <img
-                className="movie-poster"
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-              />
-              <h3 className="movie-title">{movie.title}</h3>
-              <p className="movie-overview">{movie.overview}</p>
-            </div>
-          );
-        })}
-        <Background />
+        <div className="tendance-grid">
+          {movies.map((movie) => {
+            const genreNames = movie.genre_ids
+              .map((id) => genres[id])
+              .join(", ");
+            return (
+              <div
+                key={movie.id}
+                onClick={() => {
+                  setShowCard(true);
+                  setIdMovie(movie.id);
+                }}
+                onKeyDown={() => {
+                  setShowCard(true);
+                  setIdMovie(movie.id);
+                }}
+              >
+                <MiniCard
+                  id={movie.id}
+                  title={movie.title}
+                  poster_path={movie.poster_path}
+                  genre={genreNames}
+                />
+              </div>
+            );
+          })}
+        </div>
       </section>
+      {showCard && (
+        <Card id={idMovie} showCard={true} setShowCard={setShowCard} />
+      )}
     </>
   );
 }

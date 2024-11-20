@@ -1,0 +1,24 @@
+.mini-card {
+  width: 35vw;
+  color: rgb(243, 243, 243);
+  border-radius: 1vw;
+  overflow: hidden;
+  margin-bottom: 5vw;
+}
+
+.mini-card > img {
+  width: 100%;
+  margin-bottom: 1vw;
+}
+
+.mini-card > h2 {
+  font-size: 4vw;
+  margin-bottom: 2vw;
+  margin-left: 1vw;
+}
+
+.description > p {
+  font-size: 3vw;
+  margin-bottom: 2vw;
+  margin-left: 1vw;
+}
