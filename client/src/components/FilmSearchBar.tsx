@@ -36,7 +36,7 @@ const SearchBar = () => {
   async function searchBarQuery(search: string) {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${search}`,
+        `https://api.themoviedb.org/3/search/movie?adult=false&api_key=${apiKey}&query=${search}`,
       );
       const responseJson = await response.json();
       setSearchResult(responseJson.results);

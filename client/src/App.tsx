@@ -1,16 +1,10 @@
-import FilmSearchBar from "./components/FilmSearchBar";
 import "./App.css";
-import ButtonBurger from "./components/ButtonBurger";
-import Card from "./components/Card";
-import Cards from "./components/Cards";
+import HomeScreen from "./components/HomeScreen";
 
 const App = () => {
   return (
     <>
-      <FilmSearchBar />
-      <ButtonBurger />
-      <Cards />
-      <Card />
+      <HomeScreen />
     </>
   );
 };

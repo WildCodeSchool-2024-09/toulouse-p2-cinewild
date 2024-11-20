@@ -8,6 +8,7 @@
   align-items: center;
   display: flex;
   position: relative;
+  z-index: 1;
 }
 
 .search-input {
@@ -21,7 +22,7 @@
 
 .search-button {
   border: none;
-  background-color: #e44a35;
+  background-color: var(--secondary-color);
   color: #fff;
   cursor: pointer;
   height: 7vw;
@@ -29,7 +30,7 @@
   position: absolute;
   right: 0;
   border-radius: 10vw;
-  margin-right: 0.6vw;
+  margin-right: 1vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -47,6 +48,7 @@
 .suggestionList {
   display: flex;
   justify-content: center;
+  color: #ededed;
 }
 
 .li-suggestion-list {

@@ -1,83 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Lato", sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #eee;
-  margin: 0;
+:root {
+  --secondary-color: #cb3d2a;
 }
 
-#root {
-  height: 100vh;
-  background-image: url("./assets/images/background.webp");
-  background-size: cover;
-  background-position: top;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  grid-template-rows: 1fr;
-  align-content: start;
-  padding: 1rem;
-}
-
-header {
-  grid-column: 1 / 2;
-  grid-row: 1;
-}
-
-footer {
-  grid-column: -2 / -1;
-  grid-row: 1;
-  align-self: end;
-  text-align: right;
-}
-
-body {
-  background-color: rgb(0, 0, 0);
-}
-.burger-menu {
-  width: 30px;
-  height: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-}
-
-.burger-menu span {
-  display: block;
-  width: 100%;
-  height: 4px;
-  background-color: rgb(255, 255, 255);
-  transition: all 0.3s ease;
-}
-
-.burger-menu.open span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
-}
-
-.burger-menu.open span:nth-child(2) {
-  opacity: 0;
-}
-
-.burger-menu.open span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
-}
-
-.modal {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background: white;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-}
 h1 {
-  background-image: linear-gradient(to right, blue, pink);
+  font-family: "Bebas Neue", sans-serif;
 }

@@ -1,0 +1,101 @@
+body {
+  min-height: 100vh;
+  background: linear-gradient(#090909, #4c4848);
+}
+
+nav {
+  display: flex;
+  padding: 8vw 8vw 3vw 4vw;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  font-size: 8vw;
+  background: linear-gradient(90deg, #ca402e, #72210f, #ca402e);
+  background-clip: text;
+  color: transparent;
+}
+
+.menu-burger-button {
+  cursor: pointer;
+  width: 7vw;
+}
+
+.suggestion-section {
+  padding: 4vw;
+}
+
+.intro-sentence {
+  font-size: 4.5vw;
+  color: #fbfbfb;
+  span {
+    color: var(--secondary-color);
+  }
+}
+
+.home-searchbar {
+  width: 90%;
+  margin: 8vw auto;
+}
+
+.tendance-title {
+  font-size: 5vw;
+  color: white;
+  margin-left: 5vw;
+  margin-bottom: 5vw;
+}
+
+.tendance-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 85%;
+  margin: 0 auto;
+  gap: 1vw;
+}
+
+@media screen and (width > 550px) {
+  nav {
+    padding: 4vw 8vw 3vw 4vw;
+  }
+
+  .site-title {
+    font-size: 6vw;
+  }
+
+  .menu-burger-button {
+    width: 5vw;
+  }
+
+  .intro-sentence {
+    font-size: 3vw;
+  }
+
+  .tendance {
+    margin-top: 6vw;
+    margin-left: 5vw;
+  }
+
+  .tendance-title {
+    font-size: 3vw;
+  }
+}
+
+@media screen and (width > 1000px) {
+  .site-title {
+    font-size: 5vw;
+  }
+
+  .menu-burger-button {
+    width: 4vw;
+  }
+
+  .intro-sentence {
+    margin-left: 1vw;
+  }
+
+  .tendance {
+    margin-left: 4vw;
+  }
+}
