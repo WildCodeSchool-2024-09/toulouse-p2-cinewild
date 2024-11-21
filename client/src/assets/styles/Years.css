@@ -14,7 +14,7 @@
   padding-bottom: 30px;
   overflow-y: scroll;
   scrollbar-color: #1900ff #ff0000;
-  z-index: 2;
+  z-index: 5;
   margin-top: 15%;
 }
 

@@ -1,10 +1,11 @@
 import "../assets/styles/HomeScreen.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import FilmSearchBar from "./FilmSearchBar";
-import MiniCard from "./MiniCard";
+import Background from "./Background";
 import ButtonBurger from "./ButtonBurger";
 import Card from "./Card";
+import FilmSearchBar from "./FilmSearchBar";
+import MiniCard from "./MiniCard";
 
 interface Movie {
   id: number;
@@ -71,6 +72,13 @@ export default function HomeScreen() {
     return <div>Error: {error}</div>;
   }
 
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <>
       <nav>
@@ -92,6 +100,7 @@ export default function HomeScreen() {
         <div className="tendance-grid">
           {movies.map((movie) => {
             const genreNames = movie.genre_ids
+              .slice(0, 2)
               .map((id) => genres[id])
               .join(", ");
             return (
@@ -100,6 +109,7 @@ export default function HomeScreen() {
                 onClick={() => {
                   setShowCard(true);
                   setIdMovie(movie.id);
+                  handleScrollToTop();
                 }}
                 onKeyDown={() => {
                   setShowCard(true);
@@ -118,7 +128,10 @@ export default function HomeScreen() {
         </div>
       </section>
       {showCard && (
-        <Card id={idMovie} showCard={true} setShowCard={setShowCard} />
+        <>
+          <Background />
+          <Card id={idMovie} showCard={true} setShowCard={setShowCard} />
+        </>
       )}
     </>
   );

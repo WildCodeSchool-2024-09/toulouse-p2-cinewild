@@ -8,7 +8,7 @@
   align-items: center;
   display: flex;
   position: relative;
-  z-index: 1;
+  z-index: 0;
 }
 
 .search-input {
@@ -66,4 +66,26 @@
 
 .li-suggestion-list:not(:last-child) {
   border-bottom: 1px solid #ccc;
+}
+
+@media screen and (width > 800px) {
+  .search-input {
+    padding-left: 2vw;
+    padding-block: 1vw;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 10vw;
+    font-size: 2vw;
+  }
+
+  .search-button {
+    height: 4vw;
+    width: 4vw;
+    margin-right: 0.5vw;
+  }
+
+  .image-loupe {
+    height: 2vw;
+    width: 2vw;
+  }
 }
