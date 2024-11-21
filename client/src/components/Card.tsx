@@ -28,6 +28,7 @@ interface CardProps {
 export default function Card({ id, setShowCard }: CardProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [movie, setMovie] = useState<Movie | null>(null);
+  const [showSynopsys, setShowSynopsis] = useState<boolean>(false);
 
   useEffect(() => {
     async function searchIdQuery(id: number | null) {
@@ -49,7 +50,6 @@ export default function Card({ id, setShowCard }: CardProps) {
     <>
       {movie && (
         <div className="modale">
-          <h2>{movie?.title}</h2>
           <img
             className="image"
             src={
@@ -59,29 +59,49 @@ export default function Card({ id, setShowCard }: CardProps) {
             }
             alt={movie?.title || "Movie Poster"}
           />
-          <section className="section">
-            <div className="date">
-              <h3>Date de sortie</h3>
-              <p>{movie?.release_date?.split("-")[0]}</p>
+          <section className="details-film-section">
+            <h2 className="film-detail-title">{movie?.title}</h2>
+            <div className="film-genre">
+              {movie.genres.slice(0, 2).map((genre) => (
+                <button key={genre.id} type="button">
+                  {genre.name.toUpperCase()}
+                </button>
+              ))}
             </div>
-            <div className="origine">
-              <h3>Langue</h3>
-              <p>{movie?.original_language}</p>
+            <div className="first-part-details">
+              <div className="origine">
+                <h3>Langue</h3>
+                <p>{movie.original_language.toUpperCase()}</p>
+              </div>
+              <div className="detail-film-date">
+                <h3>Année de sortie</h3>
+                <p>{movie?.release_date?.split("-")[0]}</p>
+              </div>
             </div>
-            <div className="note">
+            <div className="detail-film-note">
               <h3>Note globale</h3>
-              <p>{movie?.vote_average}</p>
-            </div>
-            <div className="type">
-              <h3>Genre</h3>
-              <p>{movie?.genres.map((genre) => genre.name).join(", ")}</p>
+              <p>{movie.vote_average}</p>
             </div>
             <div className="resume">
               <h3>Résumé</h3>
               <p>
-                {movie?.overview?.length > 100
-                  ? `${movie.overview.slice(0, 100)}...`
-                  : movie.overview}
+                {movie.overview?.length > 100 && !showSynopsys ? (
+                  <>
+                    {movie.overview.slice(0, 100)}
+                    {"... "}
+                    <button
+                      className="button-plus"
+                      type="button"
+                      onClick={() => {
+                        setShowSynopsis(true);
+                      }}
+                    >
+                      plus
+                    </button>
+                  </>
+                ) : (
+                  movie.overview
+                )}
               </p>
             </div>
           </section>
