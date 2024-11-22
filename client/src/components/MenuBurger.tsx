@@ -3,7 +3,21 @@ import { useState } from "react";
 import Genre from "./Genre";
 import Annee from "./Years";
 
-export default function MenuBurger() {
+interface Props {
+  setSelectGenreId: React.Dispatch<React.SetStateAction<number | null>>;
+  setSelectYears: React.Dispatch<React.SetStateAction<number | null>>;
+  setSelectPopular: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectNews: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function MenuBurger({
+  setSelectNews,
+  setSelectPopular,
+  setSelectGenreId,
+  setSelectYears,
+  setIsOpen,
+}: Props) {
   const [isGenreOpen, setIsGenreOpen] = useState(false);
   const [isOpenYear, setisOpenYear] = useState(false);
   return (
@@ -13,7 +27,9 @@ export default function MenuBurger() {
           <button
             type="button"
             className={`button ${isGenreOpen ? "open" : ""}`}
-            onClick={() => setIsGenreOpen(!isGenreOpen)}
+            onClick={() => {
+              setIsGenreOpen(!isGenreOpen);
+            }}
             onKeyDown={() => setIsGenreOpen(!isGenreOpen)}
           >
             <div />
@@ -24,16 +40,14 @@ export default function MenuBurger() {
               alt="genre"
             />
           </button>
-          <button className="button" type="button">
-            <div />
-            Nouveautés
-            <img
-              className="logobutton"
-              src="../src/assets/images/news.png"
-              alt="Nouveautés"
-            />
-          </button>
-          <button className="button" type="button">
+          <button
+            className="button"
+            type="button"
+            onClick={() => {
+              setSelectNews(true);
+              setIsOpen(false);
+            }}
+          >
             <div />
             Films à l'affiche
             <img
@@ -42,7 +56,14 @@ export default function MenuBurger() {
               alt="Films à l'affiche"
             />
           </button>
-          <button className="button" type="button">
+          <button
+            className="button"
+            type="button"
+            onClick={() => {
+              setSelectPopular(true);
+              setIsOpen(false);
+            }}
+          >
             <div />
             Populaire
             <img
@@ -65,7 +86,13 @@ export default function MenuBurger() {
               alt="year"
             />
           </button>
-          <button className="button" type="button">
+          <button
+            className="button"
+            type="button"
+            onClick={() => {
+              setIsOpen(false);
+            }}
+          >
             <div />
             Favoris
             <img
@@ -76,9 +103,21 @@ export default function MenuBurger() {
           </button>
         </div>
       )}
-      {isGenreOpen && <Genre isOpen={isGenreOpen} setIsOpen={setIsGenreOpen} />}
+      {isGenreOpen && (
+        <Genre
+          isOpen={isGenreOpen}
+          setIsOpen={setIsGenreOpen}
+          setSelectGenreId={setSelectGenreId}
+          setIsOpenM={setIsOpen}
+        />
+      )}
       {isOpenYear && (
-        <Annee isOpenYear={isOpenYear} setisOpenYear={setisOpenYear} />
+        <Annee
+          isOpenYear={isOpenYear}
+          setisOpenYear={setisOpenYear}
+          setSelectYears={setSelectYears}
+          setIsOpen={setIsOpen}
+        />
       )}
     </>
   );
