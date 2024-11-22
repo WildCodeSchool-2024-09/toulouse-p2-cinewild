@@ -6,13 +6,7 @@ import ButtonBurger from "./ButtonBurger";
 import Card from "./Card";
 import FilmSearchBar from "./FilmSearchBar";
 import MiniCard from "./MiniCard";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  genre_ids: number[];
-}
+import type { Movie } from "../types/interface";
 
 export default function HomeScreen() {
   const genresArray = [
@@ -218,9 +212,11 @@ export default function HomeScreen() {
         <div className="tendance-grid">
           {movies.map((movie) => {
             const genreNames = movie.genre_ids
-              .slice(0, 2)
-              .map((id) => genres[id])
-              .join(", ");
+              ? movie.genre_ids
+                  .slice(0, 2)
+                  .map((id) => genres[id])
+                  .join(", ")
+              : "";
             return (
               <div
                 key={movie.id}

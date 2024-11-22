@@ -1,29 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import "../assets/styles/Card.css";
-
-interface genresProps {
-  id: number;
-  name: string;
-}
-
-interface Movie {
-  id: number;
-  budget: number;
-  title: string;
-  poster_path: string;
-  release_date: string;
-  original_language: string;
-  vote_average: number;
-  genres: genresProps[];
-  overview: string;
-}
-
-interface CardProps {
-  id: number | null;
-  showCard: boolean;
-  setShowCard: (showCard: boolean) => void;
-}
+import type { Movie } from "../types/interface";
+import type { CardProps } from "../types/interface";
 
 export default function Card({ id, setShowCard }: CardProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -71,7 +50,7 @@ export default function Card({ id, setShowCard }: CardProps) {
             <div className="first-part-details">
               <div className="origine">
                 <h3>Langue</h3>
-                <p>{movie.original_language.toUpperCase()}</p>
+                <p>{movie.original_language?.toUpperCase() || "N/A"}</p>
               </div>
               <div className="detail-film-date">
                 <h3>Année de sortie</h3>
@@ -85,7 +64,9 @@ export default function Card({ id, setShowCard }: CardProps) {
             <div className="resume">
               <h3>Résumé</h3>
               <p>
-                {movie.overview?.length > 100 && !showSynopsys ? (
+                {movie.overview &&
+                movie.overview.length > 100 &&
+                !showSynopsys ? (
                   <>
                     {movie.overview.slice(0, 100)}
                     {"... "}

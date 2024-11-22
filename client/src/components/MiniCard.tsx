@@ -1,11 +1,5 @@
 import "../assets/styles/miniCard.css";
-
-interface MiniCardProps {
-  id: number;
-  title: string;
-  poster_path: string;
-  genre: string;
-}
+import type { MiniCardProps } from "../types/interface";
 
 export default function MiniCard({ title, poster_path, genre }: MiniCardProps) {
   return (

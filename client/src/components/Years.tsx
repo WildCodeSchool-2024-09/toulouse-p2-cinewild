@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../assets/styles/Years.css";
 
-interface AnneeProps {
+interface ShowAnneeProps {
   isOpenYear: boolean;
   setisOpenYear: (open: boolean) => void;
   setSelectYears: React.Dispatch<React.SetStateAction<number | null>>;
@@ -13,14 +13,14 @@ export default function Annee({
   setisOpenYear,
   setSelectYears,
   setIsOpen,
-}: AnneeProps) {
+}: ShowAnneeProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [firstFilmYear, setFirstFilmYear] = useState<number>(0);
 
   async function getOldestMovieDate() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=release_date.asc`,
+        `https://api.themoviedb.org/3/discover/movie?adult=false&api_key=${apiKey}&sort_by=release_date.asc`,
       );
 
       const data = await response.json();

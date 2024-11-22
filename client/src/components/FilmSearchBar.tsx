@@ -1,22 +1,6 @@
 import { useEffect, useState } from "react";
 import "../assets/styles/FilmSearchBar.css";
-
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
+import type { Movie } from "../types/interface";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
@@ -28,8 +12,10 @@ const SearchBar = () => {
   useEffect(() => {
     if (searchText.trim()) {
       searchBarQuery(searchText);
+      setShowSuggestion(true);
     } else {
       setSearchResult([]);
+      setShowSuggestion(false);
     }
   }, [searchText]);
 
@@ -56,7 +42,6 @@ const SearchBar = () => {
           className="search-input"
           onChange={(event) => {
             setSearchText(event.target.value);
-            setShowSuggestion(true);
           }}
         />
         <button type="button" className="search-button">

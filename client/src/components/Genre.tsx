@@ -1,16 +1,7 @@
 import { useState } from "react";
 import "../assets/styles/Genre.css";
-
-interface GenreProps {
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
-}
-
-interface GenreItemsProps {
-  id: number;
-  name: string;
-}
-interface GenreProps {
+import type { GenreItemsProps } from "../types/interface";
+interface OpenProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
   setSelectGenreId: React.Dispatch<React.SetStateAction<number | null>>;
@@ -22,7 +13,7 @@ export default function Genre({
   setIsOpen,
   setSelectGenreId,
   setIsOpenM,
-}: GenreProps) {
+}: OpenProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [genreList, setGenreList] = useState<Array<GenreItemsProps>>([]);
 
