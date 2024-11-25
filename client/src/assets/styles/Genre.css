@@ -32,7 +32,7 @@
 }
 
 .button-genre:active {
-  background-color: aqua;
+  background-color: var(--secondary-color);
 }
 
 .return {
@@ -41,9 +41,32 @@
   left: 30px;
   top: 25px;
 }
-
+.genre-title-categorie {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #dbd8d8;
+  font-size: 5vw;
+}
+.logo-button-genre {
+  width: 6vw;
+  margin-left: 1vw;
+  margin-block: auto;
+  margin-left: 3vw;
+}
 @media (min-width: 1024px) {
   .button-genre:hover {
-    background-color: #dbd8d8;
+    background-color: var(--secondary-color);
+  }
+  .buttons-genre {
+    top: -5vw;
+  }
+
+  .logo-button-genre {
+    width: 2vw;
+    margin-left: 1vw;
+  }
+  .genre-title-categorie {
+    font-size: 2vw;
   }
 }

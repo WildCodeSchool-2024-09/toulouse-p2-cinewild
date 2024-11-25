@@ -26,6 +26,7 @@ export interface CardProps {
   id: number | null;
   showCard: boolean;
   setShowCard: (showCard: boolean) => void;
+  onToggleFavorite?: (movieId: number) => void;
 }
 
 export interface GenreProps {
