@@ -10,8 +10,19 @@ interface GenreItemsProps {
   id: number;
   name: string;
 }
+interface GenreProps {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  setSelectGenreId: React.Dispatch<React.SetStateAction<number | null>>;
+  setIsOpenM: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export default function Genre({ isOpen, setIsOpen }: GenreProps) {
+export default function Genre({
+  isOpen,
+  setIsOpen,
+  setSelectGenreId,
+  setIsOpenM,
+}: GenreProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [genreList, setGenreList] = useState<Array<GenreItemsProps>>([]);
 
@@ -54,7 +65,15 @@ export default function Genre({ isOpen, setIsOpen }: GenreProps) {
         </h2>
         {genreList.map((genre) => {
           return (
-            <button key={genre.id} className="button-genre" type="button">
+            <button
+              key={genre.id}
+              className="button-genre"
+              type="button"
+              onClick={() => {
+                setSelectGenreId(genre.id);
+                setIsOpenM(false);
+              }}
+            >
               {genre.name}
             </button>
           );

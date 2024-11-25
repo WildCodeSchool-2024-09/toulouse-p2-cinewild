@@ -22,3 +22,41 @@
   margin-bottom: 2vw;
   margin-left: 1vw;
 }
+
+@media screen and (width > 600px) {
+  .mini-card {
+    width: 21vw;
+    margin-bottom: 1vw;
+  }
+
+  .mini-card > img {
+    margin-bottom: 0.5vw;
+  }
+
+  .mini-card > h2 {
+    font-size: 2.5vw;
+    margin-bottom: 1vw;
+  }
+
+  .description > p {
+    font-size: 2vw;
+    margin-bottom: 2vw;
+    margin-left: 1vw;
+  }
+}
+
+@media screen and (width > 900px) {
+  .mini-card {
+    width: 15vw;
+  }
+
+  .mini-card > h2 {
+    font-size: 1.5vw;
+    margin-bottom: 0.6vw;
+  }
+
+  .description > p {
+    font-size: 1vw;
+    margin-bottom: 2vw;
+  }
+}

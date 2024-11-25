@@ -20,6 +20,10 @@
   }
 }
 
+#toggle:checked + .buttons {
+  animation: disapparition 1s forwards;
+}
+
 .buttons {
   top: 4vw;
   margin-top: 15%;
@@ -36,7 +40,12 @@
   border-radius: 20px;
   padding-bottom: 30px;
   animation: apparition 1s;
+<<<<<<< HEAD
   z-index: 2;
+=======
+
+  z-index: 5;
+>>>>>>> dev
 }
 
 .closing {

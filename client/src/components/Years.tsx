@@ -4,9 +4,16 @@ import "../assets/styles/Years.css";
 interface AnneeProps {
   isOpenYear: boolean;
   setisOpenYear: (open: boolean) => void;
+  setSelectYears: React.Dispatch<React.SetStateAction<number | null>>;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Annee({ isOpenYear, setisOpenYear }: AnneeProps) {
+export default function Annee({
+  isOpenYear,
+  setisOpenYear,
+  setSelectYears,
+  setIsOpen,
+}: AnneeProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [firstFilmYear, setFirstFilmYear] = useState<number>(0);
 
@@ -61,7 +68,15 @@ export default function Annee({ isOpenYear, setisOpenYear }: AnneeProps) {
           />
         </h2>
         {years.map((year: number) => (
-          <button key={year} className="button-years" type="button">
+          <button
+            key={year}
+            className="button-years"
+            type="button"
+            onClick={() => {
+              setSelectYears(year);
+              setIsOpen(false);
+            }}
+          >
             {year}
           </button>
         ))}
