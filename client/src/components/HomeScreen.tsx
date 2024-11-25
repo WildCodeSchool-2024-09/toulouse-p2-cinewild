@@ -1,7 +1,10 @@
 import "../assets/styles/HomeScreen.css";
 import { useState } from "react";
 import { useEffect } from "react";
+<<<<<<< HEAD
+=======
 import Background from "./Background";
+>>>>>>> dev
 import ButtonBurger from "./ButtonBurger";
 import Card from "./Card";
 import FilmSearchBar from "./FilmSearchBar";
