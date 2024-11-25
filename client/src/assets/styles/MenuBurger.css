@@ -69,13 +69,16 @@
 }
 
 .button:active {
-  background-color: aqua;
+  background-color: var(--secondary-color);
 }
 .logobutton {
   height: 30px;
 }
 @media (min-width: 1024px) {
   .button:hover {
-    background-color: #dbd8d8;
+    background-color: var(--secondary-color);
+  }
+  .buttons {
+    top: -5vw;
   }
 }
