@@ -55,10 +55,10 @@ export default function Genre({
           className="return"
         />
 
-        <h2>
+        <h2 className="genre-title-categorie">
           Genre
           <img
-            className="logobutton"
+            className="logo-button-genre"
             src="../src/assets/images/genre.png"
             alt="genre"
           />

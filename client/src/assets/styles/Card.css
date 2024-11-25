@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.modale > img {
+.image {
   width: 100%;
 }
 
@@ -133,15 +133,19 @@
   }
 }
 
-@media screen and (width > 800px) {
+@media screen and (width > 900px) {
   .modale {
-    width: 50vw;
-    margin-left: 25vw;
+    width: 90vw;
+    margin-left: 5vw;
+    display: flex;
+    flex-direction: row;
+    height: 50vw;
   }
 
   .film-genre {
     gap: 1vw;
     margin-bottom: 1vw;
+    gap: 0px;
   }
 
   .details-film-section h3 {
@@ -170,5 +174,39 @@
     font-size: 2vw;
     height: 6vw;
     width: 25vw;
+  }
+  .details-film-section {
+    padding: 20px;
+  }
+
+  .details-film-section h3 {
+    font-size: 1vw;
+  }
+
+  .details-film-section p {
+    font-size: 1.1vw;
+  }
+
+  .film-detail-title {
+    font-size: 2vw;
+    margin-left: 3vw;
+  }
+
+  .film-genre button {
+    font-size: 1vw;
+    margin-left: 3vw;
+  }
+
+  .button-close {
+    font-size: 1vw;
+    height: 3vw;
+    width: 20vw;
+    margin-top: 45vw;
+    margin-left: 55vw;
+    position: absolute;
+  }
+  .image {
+    width: auto;
+    height: 130%;
   }
 }
