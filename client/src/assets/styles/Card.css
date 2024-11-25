@@ -32,3 +32,28 @@
   width: 70vw;
   font-weight: 900;
 }
+
+.emptyheart {
+  background-color: none;
+  width: 17px;
+  height: auto;
+}
+
+.fullheart {
+  background-color: none;
+  width: 17px;
+  height: auto;
+}
+
+.favorite-button {
+  background-color: transparent;
+  border: none;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cardtitle {
+  display: flex;
+  justify-content: center;
+}

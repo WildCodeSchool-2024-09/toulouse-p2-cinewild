@@ -1,10 +1,10 @@
 import "../assets/styles/HomeScreen.css";
 import { useState } from "react";
 import { useEffect } from "react";
-import FilmSearchBar from "./FilmSearchBar";
-import MiniCard from "./MiniCard";
 import ButtonBurger from "./ButtonBurger";
 import Card from "./Card";
+import FilmSearchBar from "./FilmSearchBar";
+import MiniCard from "./MiniCard";
 
 interface Movie {
   id: number;
