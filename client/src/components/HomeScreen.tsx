@@ -256,6 +256,7 @@ export default function HomeScreen() {
       <div className="footer">
         <div />
         <button
+          type="button"
           className="open-modale"
           onClick={() => setIsContactOpen(true)}
           tabIndex={0}
