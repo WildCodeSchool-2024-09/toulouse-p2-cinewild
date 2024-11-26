@@ -1,6 +1,6 @@
 import "./App.css";
-import { FavoritesProvider } from "./components/FavoritesContext";
 import HomeScreen from "./components/HomeScreen";
+import { FavoritesProvider } from "./context/FavoritesContext";
 
 const App: React.FC = () => {
   return (

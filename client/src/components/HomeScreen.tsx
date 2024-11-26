@@ -105,6 +105,7 @@ export default function HomeScreen() {
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [selectedGenreId, setSelectGenreId] = useState<number | null>(null);
   const [categoryTitle, setcategoryTitle] = useState<string>("Tendance");
+  const [_, setSelectFavorites] = useState<boolean>(false);
   const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
@@ -203,6 +204,7 @@ export default function HomeScreen() {
           setSelectYears={setSelectYears}
           setSelectPopular={setSelectPopular}
           setSelectNews={setSelectNews}
+          setSelectFavorites={setSelectFavorites}
         />
       </nav>
       <section className="suggestion-section">

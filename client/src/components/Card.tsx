@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../assets/styles/Card.css";
-import { useFavorites } from "./FavoritesContext";
+import { useFavorites } from "../context/FavoritesContext";
 
 export interface genresProps {
   id: number;
