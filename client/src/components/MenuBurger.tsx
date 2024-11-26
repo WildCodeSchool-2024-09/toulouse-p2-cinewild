@@ -18,11 +18,12 @@ export default function MenuBurger({
   setSelectPopular,
   setSelectGenreId,
   setSelectYears,
+  setSelectFavorites,
   setIsOpen,
 }: Props) {
   const [isGenreOpen, setIsGenreOpen] = useState(false);
   const [isOpenYear, setisOpenYear] = useState(false);
-  const [isOpenFavorite, setIsOpenFavorite] = useState(false);
+  const [isOpenFavorite] = useState(false);
   return (
     <>
       {!isGenreOpen === true && !isOpenYear === true && (
@@ -93,7 +94,7 @@ export default function MenuBurger({
             className="button"
             type="button"
             onClick={() => {
-              setIsOpenFavorite(!isOpenFavorite);
+              setSelectFavorites(true);
               setIsOpen(false);
             }}
           >
