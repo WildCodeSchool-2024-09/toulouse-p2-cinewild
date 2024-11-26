@@ -1,3 +1,4 @@
+import type React from "react";
 import { useState } from "react";
 import MenuBurger from "../components/MenuBurger";
 import "../assets/styles/ButtonBurger.css";
@@ -8,6 +9,7 @@ interface Props {
   setSelectYears: React.Dispatch<React.SetStateAction<number | null>>;
   setSelectPopular: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectNews: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectFavorites: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ButtonBurger({
@@ -15,6 +17,7 @@ export default function ButtonBurger({
   setSelectPopular,
   setSelectGenreId,
   setSelectYears,
+  setSelectFavorites,
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -23,6 +26,7 @@ export default function ButtonBurger({
     setSelectYears(null);
     setSelectPopular(false);
     setSelectNews(false);
+    setSelectFavorites(false);
   };
 
   return (
@@ -48,6 +52,10 @@ export default function ButtonBurger({
               setSelectNews(value);
             }}
             setIsOpen={setIsOpen}
+            setSelectFavorites={(value) => {
+              resetAllFilters();
+              setSelectFavorites(value);
+            }}
           />
         </>
       ) : (

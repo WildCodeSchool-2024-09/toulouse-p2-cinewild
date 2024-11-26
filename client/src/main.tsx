@@ -16,8 +16,6 @@ import App from "./App";
 
 /* ************************************************************************* */
 
-import { GenreProvider } from "./context/GenreContext";
-
 // Create router configuration with routes
 // You can add more routes as you build out your app!
 const router = createBrowserRouter([
@@ -39,9 +37,7 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <GenreProvider>
-      <RouterProvider router={router} />
-    </GenreProvider>
+    <RouterProvider router={router} />
   </StrictMode>,
 );
 

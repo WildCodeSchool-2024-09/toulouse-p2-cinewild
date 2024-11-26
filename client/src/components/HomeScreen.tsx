@@ -7,13 +7,8 @@ import FilmSearchBar from "./FilmSearchBar";
 import MiniCard from "./MiniCard";
 import ModalContactForm from "./ModalContactForm";
 import "../assets/styles/ModalContactForm.css";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  genre_ids: number[];
-}
+import { useFavorites } from "../context/FavoritesContext";
+import type { Movie } from "../types/interface";
 
 export default function HomeScreen() {
   const genresArray = [
@@ -105,6 +100,8 @@ export default function HomeScreen() {
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [selectedGenreId, setSelectGenreId] = useState<number | null>(null);
   const [categoryTitle, setcategoryTitle] = useState<string>("Tendance");
+  const [selectedFavorites, setSelectFavorites] = useState<boolean>(false);
+  const { favorites } = useFavorites();
   const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
@@ -143,6 +140,9 @@ export default function HomeScreen() {
           const data = await response.json();
           setcategoryTitle("Film à l'affiche");
           setMovies(data.results);
+        } else if (selectedFavorites) {
+          setcategoryTitle("Favoris");
+          setMovies(favorites);
         } else {
           const randomPage = Math.floor(Math.random() * 499) + 1;
           const response = await fetch(
@@ -159,7 +159,14 @@ export default function HomeScreen() {
     };
 
     getRandomMovies();
-  }, [selectedGenreId, selectedYears, selectedPopular, selectedNews]);
+  }, [
+    selectedGenreId,
+    selectedYears,
+    selectedPopular,
+    selectedNews,
+    selectedFavorites,
+    favorites,
+  ]);
 
   const [genres, setGenres] = useState<{ [key: number]: string }>({});
 
@@ -203,6 +210,7 @@ export default function HomeScreen() {
           setSelectYears={setSelectYears}
           setSelectPopular={setSelectPopular}
           setSelectNews={setSelectNews}
+          setSelectFavorites={setSelectFavorites}
         />
       </nav>
       <section className="suggestion-section">
@@ -220,9 +228,11 @@ export default function HomeScreen() {
         <div className="tendance-grid">
           {movies.map((movie) => {
             const genreNames = movie.genre_ids
-              .slice(0, 2)
-              .map((id) => genres[id])
-              .join(", ");
+              ? movie.genre_ids
+                  .slice(0, 2)
+                  .map((id) => genres[id])
+                  .join(", ")
+              : "";
             return (
               <div
                 key={movie.id}
