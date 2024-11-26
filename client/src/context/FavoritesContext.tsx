@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import type { genresProps } from "./Card";
+import type { genresProps } from "../types/interface";
 
 interface Movie {
   id: number;

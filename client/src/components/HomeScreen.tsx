@@ -1,12 +1,18 @@
+import { useEffect, useState } from "react";
 import "../assets/styles/HomeScreen.css";
-import { useState } from "react";
-import { useEffect } from "react";
 import Background from "./Background";
 import ButtonBurger from "./ButtonBurger";
 import Card from "./Card";
 import FilmSearchBar from "./FilmSearchBar";
 import MiniCard from "./MiniCard";
-import type { Movie } from "../types/interface";
+import ModalContactForm from "./ModalContactForm";
+
+interface Movie {
+  id: number;
+  title: string;
+  poster_path: string;
+  genre_ids: number[];
+}
 
 export default function HomeScreen() {
   const genresArray = [
@@ -95,6 +101,7 @@ export default function HomeScreen() {
   const [selectedNews, setSelectNews] = useState<boolean>(false);
   const [selectedPopular, setSelectPopular] = useState<boolean>(false);
   const [selectedYears, setSelectYears] = useState<number | null>(null);
+  const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [selectedGenreId, setSelectGenreId] = useState<number | null>(null);
   const [categoryTitle, setcategoryTitle] = useState<string>("Tendance");
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -247,6 +254,28 @@ export default function HomeScreen() {
           <Card id={idMovie} showCard={true} setShowCard={setShowCard} />
         </>
       )}
+      <div className="footer">
+        <div />
+        <button
+          type="button"
+          className="open-modale"
+          onClick={() => setIsContactOpen(true)}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setIsContactOpen(true);
+            }
+          }}
+        >
+          CONTACT
+        </button>
+        <p>Made by wilder</p>
+      </div>
+
+      <ModalContactForm
+        isContactOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </>
   );
 }
