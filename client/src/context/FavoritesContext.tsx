@@ -1,17 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import type { genresProps } from "../types/interface";
-
-interface Movie {
-  id: number;
-  budget: number;
-  title: string;
-  poster_path: string;
-  release_date: string;
-  original_language: string;
-  vote_average: number;
-  genres: genresProps[];
-  overview: string;
-}
+import type { Movie } from "../types/interface";
 
 interface FavoritesContextType {
   favorites: Movie[];

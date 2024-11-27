@@ -20,7 +20,7 @@ export default function Genre({
   async function getGenreList() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`,
+        `https://api.themoviedb.org/3/genre/movie/list?language=fr&api_key=${apiKey}&without_genres=99&without_genres=10749&without_genres=18`,
       );
 
       const data = await response.json();

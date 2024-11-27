@@ -20,7 +20,7 @@ export default function Annee({
   async function getOldestMovieDate() {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?adult=false&api_key=${apiKey}&sort_by=release_date.asc`,
+        `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=release_date.asc`,
       );
 
       const data = await response.json();

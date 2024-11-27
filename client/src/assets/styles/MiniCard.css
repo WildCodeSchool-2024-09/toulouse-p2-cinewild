@@ -4,6 +4,9 @@
   border-radius: 1vw;
   overflow: hidden;
   margin-bottom: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .mini-card > img {

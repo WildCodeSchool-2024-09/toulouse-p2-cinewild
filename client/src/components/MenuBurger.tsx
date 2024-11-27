@@ -9,6 +9,7 @@ interface Props {
   setSelectPopular: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectNews: React.Dispatch<React.SetStateAction<boolean>>;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectFavorites: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function MenuBurger({
@@ -16,6 +17,7 @@ export default function MenuBurger({
   setSelectPopular,
   setSelectGenreId,
   setSelectYears,
+  setSelectFavorites,
   setIsOpen,
 }: Props) {
   const [isGenreOpen, setIsGenreOpen] = useState(false);
@@ -90,6 +92,7 @@ export default function MenuBurger({
             className="button"
             type="button"
             onClick={() => {
+              setSelectFavorites(true);
               setIsOpen(false);
             }}
           >

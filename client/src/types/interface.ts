@@ -4,22 +4,23 @@ export interface genresProps {
 }
 
 export interface Movie {
-  adult: boolean | undefined;
+  adult?: boolean;
   id: number;
   title: string;
   poster_path: string;
-  budget: number | undefined;
-  release_date: string | undefined;
-  original_language: string | undefined;
-  genre_ids: number[] | undefined;
-  vote_average: number | undefined;
+  budget?: number;
+  release_date?: string;
+  original_language?: string;
+  genre_ids?: number[];
+  vote_average?: number;
   genres: genresProps[];
-  overview: string | undefined;
-  backdrop_path: string | undefined;
-  original_title: string | undefined;
-  video: boolean | undefined;
-  vote_count: number | undefined;
-  popularity: number | undefined;
+  overview?: string;
+  backdrop_path?: string;
+  original_title?: string;
+  video?: boolean;
+  vote_count?: number;
+  popularity?: number;
+  total_pages?: number;
 }
 
 export interface CardProps {

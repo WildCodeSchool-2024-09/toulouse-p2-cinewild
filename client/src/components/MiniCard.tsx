@@ -15,9 +15,7 @@ export default function MiniCard({ title, poster_path, genre }: MiniCardProps) {
           alt="film poster"
         />
         <h2 className="title">{title}</h2>
-        <div className="description">
-          <p className="types">{genre}</p>
-        </div>
+        <p className="types">{genre}</p>
       </div>
     </>
   );
