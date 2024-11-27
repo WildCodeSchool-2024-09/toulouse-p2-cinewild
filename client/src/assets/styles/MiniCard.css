@@ -1,6 +1,6 @@
 .mini-card {
   width: 35vw;
-  color: rgb(243, 243, 243);
+  color: var(--text-color);
   border-radius: 1vw;
   overflow: hidden;
   margin-bottom: 5vw;

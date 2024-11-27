@@ -8,6 +8,7 @@ interface Props {
   setSelectYears: React.Dispatch<React.SetStateAction<number | null>>;
   setSelectPopular: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectNews: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLight:React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ButtonBurger({
@@ -15,6 +16,7 @@ export default function ButtonBurger({
   setSelectPopular,
   setSelectGenreId,
   setSelectYears,
+  setIsLight,
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -48,6 +50,7 @@ export default function ButtonBurger({
               setSelectNews(value);
             }}
             setIsOpen={setIsOpen}
+            setIsLight={setIsLight}
           />
         </>
       ) : (
