@@ -99,6 +99,33 @@
   font-size: 4vw;
 }
 
+.favorite-button {
+  margin-top: 5vw;
+}
+
+.emptyheart {
+  width: 7vw;
+  height: auto;
+}
+
+.fullheart {
+  width: 7vw;
+  height: auto;
+}
+
+.favorite-button {
+  background-color: transparent;
+  border: none;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cardtitle {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (width > 500px) {
   .modale {
     width: 70vw;
@@ -130,6 +157,20 @@
     font-size: 3vw;
     height: 8vw;
     width: 30vw;
+  }
+
+  .favorite-button {
+    margin-top: 4vw;
+  }
+
+  .emptyheart {
+    width: 4vw;
+    height: auto;
+  }
+
+  .fullheart {
+    width: 4vw;
+    height: auto;
   }
 }
 
@@ -209,29 +250,18 @@
     width: auto;
     height: 130%;
   }
-}
 
-.emptyheart {
-  background-color: none;
-  width: 17px;
-  height: auto;
-}
+  .favorite-button {
+    margin-top: 3vw;
+  }
 
-.fullheart {
-  background-color: none;
-  width: 17px;
-  height: auto;
-}
+  .emptyheart {
+    width: 3vw;
+    height: auto;
+  }
 
-.favorite-button {
-  background-color: transparent;
-  border: none;
-  margin-left: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.cardtitle {
-  display: flex;
-  justify-content: center;
+  .fullheart {
+    width: 3vw;
+    height: auto;
+  }
 }
