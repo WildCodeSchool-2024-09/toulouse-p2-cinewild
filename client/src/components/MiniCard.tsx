@@ -10,7 +10,7 @@ export default function MiniCard({ title, poster_path, genre }: MiniCardProps) {
           src={
             poster_path
               ? `https://image.tmdb.org/t/p/w500${poster_path}`
-              : "fallback-image-url.jpg"
+              : "src/assets/images/sans-image.svg"
           }
           alt="film poster"
         />
