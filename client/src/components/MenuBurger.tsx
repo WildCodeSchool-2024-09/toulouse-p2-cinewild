@@ -1,5 +1,6 @@
 import "../assets/styles/MenuBurger.css";
 import { useState } from "react";
+import FavoritesPage from "./FavoritesPage";
 import Genre from "./Genre";
 import Annee from "./Years";
 import "../App.css";
@@ -11,6 +12,7 @@ interface Props {
   setSelectNews: React.Dispatch<React.SetStateAction<boolean>>;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLight: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectFavorites: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function MenuBurger({
@@ -18,6 +20,7 @@ export default function MenuBurger({
   setSelectPopular,
   setSelectGenreId,
   setSelectYears,
+  setSelectFavorites,
   setIsOpen,
   setIsLight,
 }: Props) {
@@ -25,6 +28,7 @@ export default function MenuBurger({
   const [isOpenYear, setisOpenYear] = useState(false);
   const [isOpenDark, setIsOpenDark] = useState(false);
 
+  const [isOpenFavorite] = useState(false);
   return (
     <>
       {!isGenreOpen === true && !isOpenYear === true && (
@@ -95,6 +99,7 @@ export default function MenuBurger({
             className="button"
             type="button"
             onClick={() => {
+              setSelectFavorites(true);
               setIsOpen(false);
             }}
           >
@@ -118,7 +123,7 @@ export default function MenuBurger({
             }}
           >
             <div />
-            Mode Sombre/Claire
+            {`Mode ${!isOpenDark ? "sombre" : "clair"}`}
             <div className="box-mode">
               <div className="button-mode" />
               <div className={`logo-mode ${isOpenDark ? "open" : ""}`} />
@@ -142,6 +147,7 @@ export default function MenuBurger({
           setIsOpen={setIsOpen}
         />
       )}
+      {isOpenFavorite && <FavoritesPage setIsOpen={setIsOpen} />}
     </>
   );
 }

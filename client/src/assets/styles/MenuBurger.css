@@ -100,6 +100,15 @@
   .buttons {
     padding-top: 70px;
   }
+  .button-mode {
+    width: 40px;
+  }
+  .logo-mode.open {
+    transform: translateX(18px);
+  }
+  .box-mode {
+    margin-left: 4px;
+  }
 }
 
 @media (min-width: 1024px) {

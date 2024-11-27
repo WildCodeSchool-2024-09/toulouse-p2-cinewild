@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../assets/styles/Card.css";
-import { useFavorites } from "./FavoritesContext";
+import { useFavorites } from "../context/FavoritesContext";
 
 export interface genresProps {
   id: number;
@@ -99,7 +99,7 @@ export default function Card({ id, setShowCard }: CardProps) {
             src={
               movie.poster_path
                 ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                : "fallback-image-url.jpg"
+                : "src/assets/images/sans-image.svg"
             }
             alt={movie?.title || "Movie Poster"}
           />

@@ -1,18 +1,14 @@
+import { useEffect, useState } from "react";
 import "../assets/styles/HomeScreen.css";
-import { useState } from "react";
-import { useEffect } from "react";
 import Background from "./Background";
 import ButtonBurger from "./ButtonBurger";
 import Card from "./Card";
 import FilmSearchBar from "./FilmSearchBar";
 import MiniCard from "./MiniCard";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-  genre_ids: number[];
-}
+import ModalContactForm from "./ModalContactForm";
+import "../assets/styles/ModalContactForm.css";
+import { useFavorites } from "../context/FavoritesContext";
+import type { Movie } from "../types/interface";
 
 export default function HomeScreen() {
   const genresArray = [
@@ -101,9 +97,12 @@ export default function HomeScreen() {
   const [selectedNews, setSelectNews] = useState<boolean>(false);
   const [selectedPopular, setSelectPopular] = useState<boolean>(false);
   const [selectedYears, setSelectYears] = useState<number | null>(null);
+  const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [selectedGenreId, setSelectGenreId] = useState<number | null>(null);
   const [categoryTitle, setcategoryTitle] = useState<string>("Tendance");
   const [isLight, setIsLight] = useState(false);
+  const [selectedFavorites, setSelectFavorites] = useState<boolean>(false);
+  const { favorites } = useFavorites();
   const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
@@ -142,6 +141,9 @@ export default function HomeScreen() {
           const data = await response.json();
           setcategoryTitle("Film à l'affiche");
           setMovies(data.results);
+        } else if (selectedFavorites) {
+          setcategoryTitle("Favoris");
+          setMovies(favorites);
         } else {
           const randomPage = Math.floor(Math.random() * 499) + 1;
           const response = await fetch(
@@ -158,7 +160,14 @@ export default function HomeScreen() {
     };
 
     getRandomMovies();
-  }, [selectedGenreId, selectedYears, selectedPopular, selectedNews]);
+  }, [
+    selectedGenreId,
+    selectedYears,
+    selectedPopular,
+    selectedNews,
+    selectedFavorites,
+    favorites,
+  ]);
 
   const [genres, setGenres] = useState<{ [key: number]: string }>({});
 
@@ -220,6 +229,7 @@ export default function HomeScreen() {
           setSelectPopular={setSelectPopular}
           setSelectNews={setSelectNews}
           setIsLight={setIsLight}
+          setSelectFavorites={setSelectFavorites}
         />
       </nav>
       <section className="suggestion-section">
@@ -237,9 +247,11 @@ export default function HomeScreen() {
         <div className="tendance-grid">
           {movies.map((movie) => {
             const genreNames = movie.genre_ids
-              .slice(0, 2)
-              .map((id) => genres[id])
-              .join(", ");
+              ? movie.genre_ids
+                  .slice(0, 2)
+                  .map((id) => genres[id])
+                  .join(", ")
+              : "";
             return (
               <div
                 key={movie.id}
@@ -270,6 +282,28 @@ export default function HomeScreen() {
           <Card id={idMovie} showCard={true} setShowCard={setShowCard} />
         </>
       )}
+      <div className="footer">
+        <div />
+        <button
+          type="button"
+          className="open-modale"
+          onClick={() => setIsContactOpen(true)}
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setIsContactOpen(true);
+            }
+          }}
+        >
+          CONTACT
+        </button>
+        <p>Made by wilder</p>
+      </div>
+
+      <ModalContactForm
+        isContactOpen={isContactOpen}
+        onClose={() => setIsContactOpen(false)}
+      />
     </>
   );
 }
