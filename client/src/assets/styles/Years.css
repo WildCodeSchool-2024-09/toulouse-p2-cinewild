@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: black;
+  background-color: var(--black-color);
   padding: 5%;
-  gap: 25px;
+  gap: 35px;
   width: 80%;
   height: 85%;
   top: 4vw;
@@ -15,15 +15,16 @@
   overflow-y: scroll;
   scrollbar-color: #1900ff #ff0000;
   z-index: 5;
-  margin-top: 15%;
+  margin-top: 5%;
+  padding-top: 130px;
 }
 
 .button-years {
-  min-height: 45px;
+  min-height: 60px;
   width: 95%;
-  background-color: #2e3034;
+  background-color: #515151;
   border-radius: 30px;
-  color: #dbd8d8;
+  color: white;
   border: 0px;
   font-size: 15px;
   font-weight: 700;
@@ -41,7 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #dbd8d8;
+  color: var(--text-color);
   font-size: 5vw;
 }
 
@@ -66,5 +67,11 @@
   }
   .year-title-categorie {
     font-size: 2vw;
+  }
+}
+@media (max-width: 1024px) {
+  .buttons-years {
+    padding-top: 60px;
+    top: 0;
   }
 }

@@ -10,6 +10,7 @@ interface Props {
   setSelectPopular: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectNews: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectFavorites: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLight: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ButtonBurger({
@@ -17,6 +18,7 @@ export default function ButtonBurger({
   setSelectPopular,
   setSelectGenreId,
   setSelectYears,
+  setIsLight,
   setSelectFavorites,
 }: Props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,6 +54,7 @@ export default function ButtonBurger({
               setSelectNews(value);
             }}
             setIsOpen={setIsOpen}
+            setIsLight={setIsLight}
             setSelectFavorites={(value) => {
               resetAllFilters();
               setSelectFavorites(value);

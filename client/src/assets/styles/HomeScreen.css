@@ -1,6 +1,6 @@
 body {
   min-height: 100vh;
-  background: linear-gradient(#090909, #4c4848);
+  background: var(--primary-color);
 }
 
 nav {
@@ -28,7 +28,7 @@ nav {
 
 .intro-sentence {
   font-size: 4.5vw;
-  color: #fbfbfb;
+  color: var(--text-color);
 }
 
 .intro-sentence > span {
@@ -42,7 +42,7 @@ nav {
 
 .tendance-title {
   font-size: 5vw;
-  color: white;
+  color: var(--text-color);
   margin-left: 5vw;
   margin-bottom: 5vw;
 }
@@ -155,7 +155,7 @@ footer button {
 
   .tendance-title {
     font-size: 2vw;
-    color: white;
+    color: var(--text-color);
     margin-left: 5vw;
     margin-bottom: 3vw;
   }

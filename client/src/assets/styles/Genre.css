@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: black;
+  background-color: var(--black-color);
   padding: 5%;
-  gap: 25px;
+  gap: 35px;
   width: 80%;
   height: 85%;
   top: 4vw;
@@ -14,14 +14,15 @@
   padding-bottom: 30px;
   overflow-y: scroll;
   z-index: 5;
-  margin-top: 15%;
+  margin-top: 5%;
+  padding-top: 130px;
 }
 .button-genre {
-  min-height: 45px;
+  min-height: 60px;
   width: 95%;
-  background-color: #2e3034;
+  background-color: #515151;
   border-radius: 30px;
-  color: #dbd8d8;
+  color: white;
   border: 0px;
   font-size: 15px;
   font-weight: 700;
@@ -38,14 +39,14 @@
 .return {
   position: absolute;
   height: 30px;
-  left: 30px;
-  top: 25px;
+  left: 60px;
+  top: 71px;
 }
 .genre-title-categorie {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #dbd8d8;
+  color: var(--text-color);
   font-size: 5vw;
 }
 .logo-button-genre {
@@ -68,5 +69,11 @@
   }
   .genre-title-categorie {
     font-size: 2vw;
+  }
+}
+@media (max-width: 1024px) {
+  .buttons-genre {
+    padding-top: 60px;
+    top: 0;
   }
 }

@@ -1,5 +1,5 @@
 .modale {
-  background-color: rgb(0, 0, 0);
+  background-color: var(--black-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,7 +8,7 @@
   width: 90vw;
   margin-left: 5vw;
   border-radius: 14px;
-  color: #dbd8d8;
+  color: var(--text-color);
   border: 1px solid rgba(219, 216, 216, 0.5);
   margin-top: 5vw;
   padding-bottom: 4vw;
@@ -36,7 +36,7 @@
 .details-film-section p {
   font-size: 4vw;
   font-weight: 500;
-  color: white;
+  color: var(--text-color);
 }
 
 .film-detail-title {
@@ -57,7 +57,7 @@
   font-size: 3.3vw;
   border: none;
   background-color: #5a2323;
-  color: #e7e7e7;
+  color: white;
 }
 
 .film-genre button:hover {
@@ -85,12 +85,12 @@
 .button-plus {
   border: none;
   background: none;
-  color: #dbd8d8;
+  color: var(--text-color);
 }
 
 .button-close {
   background-color: #e44a35;
-  color: #dbd8d8;
+  color: var(--text-color);
   border: none;
   border-radius: 10px;
   height: 10vw;

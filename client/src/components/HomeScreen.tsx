@@ -100,6 +100,7 @@ export default function HomeScreen() {
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [selectedGenreId, setSelectGenreId] = useState<number | null>(null);
   const [categoryTitle, setcategoryTitle] = useState<string>("Tendance");
+  const [isLight, setIsLight] = useState(false);
   const [selectedFavorites, setSelectFavorites] = useState<boolean>(false);
   const { favorites } = useFavorites();
   const [searchText, setSearchText] = useState<string>("");
@@ -115,7 +116,7 @@ export default function HomeScreen() {
             genresArray.find((genre) => genre.id === selectedGenreId)?.name ||
             "Genre";
           const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&without_genres=99&without_genres=18&without_genres=10749&adult=false`,
+            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&without_genres=99&without_genres=18&without_genres=10749&adult=false&with_genres=${selectedGenreId}`,
           );
           const data = await response.json();
           setcategoryTitle(`${genreName}`);
@@ -220,6 +221,23 @@ export default function HomeScreen() {
       behavior: "smooth",
     });
   };
+  if (isLight) {
+    document.documentElement.style.setProperty(
+      "--primary-color",
+      "linear-gradient(#C2C2C2, white)",
+    );
+    document.documentElement.style.setProperty("--button-color", "#dbd8d8");
+    document.documentElement.style.setProperty("--black-color", "#dbd8d8");
+    document.documentElement.style.setProperty("--text-color", "black");
+  } else if (!isLight) {
+    document.documentElement.style.setProperty(
+      "--primary-color",
+      "linear-gradient(#090909, #4c4848)",
+    );
+    document.documentElement.style.setProperty("--button-color", "#2e3034");
+    document.documentElement.style.setProperty("--black-color", "black");
+    document.documentElement.style.setProperty("--text-color", "#dbd8d8");
+  }
 
   return (
     <>
@@ -231,6 +249,7 @@ export default function HomeScreen() {
             setSelectYears={setSelectYears}
             setSelectPopular={setSelectPopular}
             setSelectNews={setSelectNews}
+            setIsLight={setIsLight}
             setSelectFavorites={setSelectFavorites}
           />
         </nav>

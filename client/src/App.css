@@ -10,6 +10,10 @@
 
 :root {
   --secondary-color: #cb3d2a;
+  --primary-color: linear-gradient(#090909, #4c4848);
+  --black-color: black;
+  --text-color: #dbd8d8;
+  --button-color: #2e3034;
 }
 
 h1 {
