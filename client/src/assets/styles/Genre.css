@@ -30,7 +30,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  
 }
 
 .button-genre:active {
@@ -42,7 +41,6 @@
   height: 30px;
   left: 60px;
   top: 71px;
-  
 }
 .genre-title-categorie {
   display: flex;
@@ -74,9 +72,8 @@
   }
 }
 @media (max-width: 1024px) {
-  .buttons-genre{
+  .buttons-genre {
     padding-top: 60px;
     top: 0;
   }
 }
-

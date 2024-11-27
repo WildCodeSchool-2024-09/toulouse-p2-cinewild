@@ -8,7 +8,7 @@ interface Props {
   setSelectYears: React.Dispatch<React.SetStateAction<number | null>>;
   setSelectPopular: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectNews: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsLight:React.Dispatch<React.SetStateAction<boolean>>;
+  setIsLight: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function ButtonBurger({

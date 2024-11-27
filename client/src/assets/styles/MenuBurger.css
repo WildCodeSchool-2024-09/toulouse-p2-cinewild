@@ -70,9 +70,8 @@
 }
 .logobutton {
   height: 30px;
-  
 }
-.button-mode{
+.button-mode {
   background-color: var(--black-color);
   width: 55px;
   height: 15px;
@@ -80,32 +79,28 @@
   border-radius: 15px;
   position: absolute;
 }
-.logo-mode{
+.logo-mode {
   height: 23px;
   width: 23px;
   background-color: var(--black-color);
   position: absolute;
   border: 1px solid #dbd8d8;
-  border-radius: 20px; 
+  border-radius: 20px;
   transition: all 0.3s ease;
 }
-.logo-mode.open{
-  transform: translateX(32px)
+.logo-mode.open {
+  transform: translateX(32px);
 }
-.box-mode{
- 
+.box-mode {
   display: flex;
   align-items: center;
-
 }
 
-
 @media (max-width: 1024px) {
-  .buttons{
+  .buttons {
     padding-top: 70px;
   }
 }
-
 
 @media (min-width: 1024px) {
   .button:hover {

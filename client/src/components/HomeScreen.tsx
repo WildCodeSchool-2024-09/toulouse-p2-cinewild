@@ -7,7 +7,6 @@ import Card from "./Card";
 import FilmSearchBar from "./FilmSearchBar";
 import MiniCard from "./MiniCard";
 
-
 interface Movie {
   id: number;
   title: string;
@@ -194,16 +193,21 @@ export default function HomeScreen() {
     });
   };
   if (isLight) {
-    document.documentElement.style.setProperty('--primary-color','linear-gradient(#C2C2C2, white)')
-    document.documentElement.style.setProperty('--button-color','#dbd8d8')
-    document.documentElement.style.setProperty('--black-color','#dbd8d8')
-    document.documentElement.style.setProperty('--text-color','black')
-  }
-  else if (!isLight) {
-    document.documentElement.style.setProperty('--primary-color','linear-gradient(#090909, #4c4848)')
-    document.documentElement.style.setProperty('--button-color','#2e3034')
-    document.documentElement.style.setProperty('--black-color','black')
-    document.documentElement.style.setProperty('--text-color','#dbd8d8')
+    document.documentElement.style.setProperty(
+      "--primary-color",
+      "linear-gradient(#C2C2C2, white)",
+    );
+    document.documentElement.style.setProperty("--button-color", "#dbd8d8");
+    document.documentElement.style.setProperty("--black-color", "#dbd8d8");
+    document.documentElement.style.setProperty("--text-color", "black");
+  } else if (!isLight) {
+    document.documentElement.style.setProperty(
+      "--primary-color",
+      "linear-gradient(#090909, #4c4848)",
+    );
+    document.documentElement.style.setProperty("--button-color", "#2e3034");
+    document.documentElement.style.setProperty("--black-color", "black");
+    document.documentElement.style.setProperty("--text-color", "#dbd8d8");
   }
 
   return (

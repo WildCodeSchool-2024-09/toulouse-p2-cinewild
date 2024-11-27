@@ -2,7 +2,7 @@ import "../assets/styles/MenuBurger.css";
 import { useState } from "react";
 import Genre from "./Genre";
 import Annee from "./Years";
-import "../App.css"
+import "../App.css";
 
 interface Props {
   setSelectGenreId: React.Dispatch<React.SetStateAction<number | null>>;
@@ -19,13 +19,11 @@ export default function MenuBurger({
   setSelectGenreId,
   setSelectYears,
   setIsOpen,
-  setIsLight
-  
+  setIsLight,
 }: Props) {
   const [isGenreOpen, setIsGenreOpen] = useState(false);
   const [isOpenYear, setisOpenYear] = useState(false);
-  const [isOpenDark, setIsOpenDark] =useState(false);
-  
+  const [isOpenDark, setIsOpenDark] = useState(false);
 
   return (
     <>
@@ -111,14 +109,18 @@ export default function MenuBurger({
           <button
             className="button"
             type="button"
-            onClick={() => {setIsLight((prev) => !prev); setIsOpenDark(!isOpenDark)}}
-              onKeyDown={() => {setIsLight(true)}}
-
+            onClick={() => {
+              setIsLight((prev) => !prev);
+              setIsOpenDark(!isOpenDark);
+            }}
+            onKeyDown={() => {
+              setIsLight(true);
+            }}
           >
             <div />
             Mode Sombre/Claire
             <div className="box-mode">
-              <div className="button-mode"/>
+              <div className="button-mode" />
               <div className={`logo-mode ${isOpenDark ? "open" : ""}`} />
             </div>
           </button>
