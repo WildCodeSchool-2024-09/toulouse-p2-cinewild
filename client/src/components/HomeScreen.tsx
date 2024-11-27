@@ -168,7 +168,7 @@ export default function HomeScreen() {
       try {
         const response = await fetch(
           `https://api.themoviedb.org/3/genre/movie/list?language=fr&api_key=${apiKey}`,
-        ); 
+        );
         const data = await response.json();
         const genreMap: { [key: number]: string } = {};
         for (const genre of data.genres) {
