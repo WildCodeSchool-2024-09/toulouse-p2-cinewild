@@ -1,19 +1,69 @@
-import type React from "react";
+import { useRef, useState } from "react";
 import "../assets/styles/ModalContactForm.css";
+import emailjs from "@emailjs/browser";
 
 interface ModalProps {
   isContactOpen: boolean;
   onClose: () => void;
 }
 
-const ModalContactForm: React.FC<ModalProps> = ({ isContactOpen, onClose }) => {
-  if (!isContactOpen) return null;
+interface EmailProps {
+  last_name: string;
+  first_name: string;
+  email: string;
+  message: string;
+}
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+const ModalContactForm: React.FC<ModalProps> = ({ isContactOpen, onClose }) => {
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [formData, setFormData] = useState<EmailProps>({
+    last_name: "",
+    first_name: "",
+    email: "",
+    message: "",
+  });
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  // Move the early return inside the component body
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    onClose();
+    if (formRef.current) {
+      emailjs
+        .sendForm("service_3xa927n", "template_m9k6uqr", formRef.current, {
+          publicKey: "c-_cxxkzxlo6IlBfG",
+        })
+        .then(
+          () => {
+            setStatusMessage("Email sent successfully!");
+            setFormData({
+              last_name: "",
+              first_name: "",
+              email: "",
+              message: "",
+            });
+          },
+          (error) => {
+            console.error("FAILED...", error.text);
+            setStatusMessage("Failed to send email. Please try again.");
+          },
+        );
+    }
   };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  // If the modal is not open, return null
+  if (!isContactOpen) return null;
 
   return (
     <div className="modal-overlay">
@@ -22,57 +72,62 @@ const ModalContactForm: React.FC<ModalProps> = ({ isContactOpen, onClose }) => {
           &times;
         </button>
 
-        <form className="formulaire" onSubmit={handleSubmit}>
+        <form className="formulaire" ref={formRef} onSubmit={handleSubmit}>
           <div className="titre">
-            <h1>CONTACT</h1>
+            <h2 className="contact-modal-title">CONTACT</h2>
           </div>
-          <ul>
-            <div className="nameLastname">
-              <li className="formName">
-                <label>
-                  Nom
-                  <textarea
-                    name="user_name"
-                    id="name"
-                    placeholder="ecrivez votre nom"
-                    required
-                  />
-                </label>
-              </li>
-              <li className="formLastName">
-                <label>
-                  Prénom
-                  <textarea
-                    name="user_lastname"
-                    id="lastname"
-                    placeholder="ecrivez votre prénom"
-                    required
-                  />
-                </label>
-              </li>
-            </div>
-            <li>
-              <label>
-                Email
-                <textarea
-                  name="user_email"
-                  id="email"
-                  placeholder="ecrivez votre email"
-                  required
-                />
-              </label>
-            </li>
-            <li>
-              <label className="formDescription">
-                Message:
-                <textarea id="msg" name="user_message" required />
-              </label>
-            </li>
-            <div className="submitdiv">
-              <input type="submit" value="Submit" />
-            </div>
-          </ul>
+          <div className="nameLastname">
+            <input
+              className="formName"
+              type="text"
+              name="last_name"
+              id="name"
+              placeholder="Nom"
+              value={formData.last_name}
+              onChange={handleInputChange}
+              required
+            />
+            <input
+              className="formLastName"
+              type="text"
+              name="first_name"
+              id="lastname"
+              placeholder="Prénom"
+              value={formData.first_name}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <input
+            className="form-email"
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleInputChange}
+            required
+          />
+          <div className="form-msg-box">
+            <textarea
+              className="form-msg"
+              name="message"
+              required
+              placeholder="Votre message"
+              value={formData.message}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="submitdiv">
+            <input type="submit" value="Envoyer" className="submit-btn" />
+          </div>
         </form>
+
+        {statusMessage && (
+          <div className="status-message">
+            <p>{statusMessage}</p>
+          </div>
+        )}
       </div>
     </div>
   );

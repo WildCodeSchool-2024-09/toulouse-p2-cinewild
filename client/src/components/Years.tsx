@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../assets/styles/Years.css";
 
-interface AnneeProps {
+interface ShowAnneeProps {
   isOpenYear: boolean;
   setisOpenYear: (open: boolean) => void;
   setSelectYears: React.Dispatch<React.SetStateAction<number | null>>;
@@ -13,7 +13,7 @@ export default function Annee({
   setisOpenYear,
   setSelectYears,
   setIsOpen,
-}: AnneeProps) {
+}: ShowAnneeProps) {
   const apiKey = import.meta.env.VITE_API_KEY;
   const [firstFilmYear, setFirstFilmYear] = useState<number>(0);
 

@@ -55,6 +55,42 @@ nav {
   gap: 5%;
 }
 
+.pagination {
+  width: 25%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #f9f9f9;
+  margin-top: 5vw;
+}
+
+.previous-button,
+.next-button {
+  background-color: var(--secondary-color);
+  border: none;
+  padding: 0.5vw 1vw;
+  border-radius: 2vw;
+  color: #f9f9f9;
+}
+
+.empty-list-text {
+  width: 100%;
+  color: #f9f9f9;
+  text-align: center;
+  margin-left: -5.5%;
+  margin-top: 5vw;
+  font-size: 4vw;
+}
+
+footer {
+  font-size: 3vw;
+}
+
+footer button {
+  font-size: 2vw;
+}
+
 @media screen and (width > 550px) {
   nav {
     padding: 4vw 8vw 3vw 4vw;
@@ -79,6 +115,18 @@ nav {
 
   .tendance-title {
     font-size: 3vw;
+  }
+
+  .empty-list-text {
+    font-size: 3vw;
+  }
+
+  footer {
+    font-size: 2vw;
+  }
+
+  footer button {
+    font-size: 1vw;
   }
 }
 
@@ -110,5 +158,17 @@ nav {
     color: var(--text-color);
     margin-left: 5vw;
     margin-bottom: 3vw;
+  }
+
+  .empty-list-text {
+    font-size: 2vw;
+  }
+
+  footer {
+    font-size: 1.5vw;
+  }
+
+  footer button {
+    font-size: 2.5vw;
   }
 }

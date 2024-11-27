@@ -1,48 +1,44 @@
 import { useEffect, useState } from "react";
 import "../assets/styles/FilmSearchBar.css";
+import type { Movie } from "../types/interface";
 
-interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
+interface SearchBarProps {
+  setShowCard: (show: boolean) => void;
+  setIdMovie: (id: number) => void;
+  setSearchResult: (search: string) => void;
 }
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
-const SearchBar = () => {
+const SearchBar = ({
+  setShowCard,
+  setIdMovie,
+  setSearchResult,
+}: SearchBarProps) => {
   const [searchText, setSearchText] = useState<string>("");
   const [showSuggestion, setShowSuggestion] = useState<boolean>(false);
-  const [searchResult, setSearchResult] = useState<Movie[]>([]);
+  const [search, setSearch] = useState<Movie[]>([]);
 
   useEffect(() => {
     if (searchText.trim()) {
       searchBarQuery(searchText);
+      setShowSuggestion(true);
     } else {
-      setSearchResult([]);
+      setSearch([]);
+      setShowSuggestion(false);
     }
   }, [searchText]);
 
   async function searchBarQuery(search: string) {
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?adult=false&api_key=${apiKey}&query=${search}`,
+        `https://api.themoviedb.org/3/search/movie?adult=false&api_key=${apiKey}&query=${search}&without_genres=99&without_genres=10749&without_genres=18`,
       );
       const responseJson = await response.json();
-      setSearchResult(responseJson.results);
+      setSearch(responseJson.results);
     } catch (error) {
       console.error(error);
-      setSearchResult([]);
+      setSearch([]);
     }
   }
 
@@ -56,10 +52,16 @@ const SearchBar = () => {
           className="search-input"
           onChange={(event) => {
             setSearchText(event.target.value);
-            setShowSuggestion(true);
           }}
         />
-        <button type="button" className="search-button">
+        <button
+          type="button"
+          className="search-button"
+          onClick={() => {
+            setSearchResult(searchText);
+            setSearchText("");
+          }}
+        >
           <img
             className="image-loupe"
             src="src/assets/images/icon-loupe.svg"
@@ -70,9 +72,20 @@ const SearchBar = () => {
       {showSuggestion && (
         <div className="suggestionList">
           <ul className="ul-suggestion-list">
-            {searchResult && searchResult.length > 0 ? (
-              searchResult.slice(0, 5).map((movie) => (
-                <li className="li-suggestion-list" key={movie.id}>
+            {search && search.length > 0 ? (
+              search.slice(0, 5).map((movie) => (
+                <li
+                  onClick={() => {
+                    setIdMovie(movie.id);
+                    setShowCard(true);
+                  }}
+                  onKeyDown={() => {
+                    setIdMovie(movie.id);
+                    setShowCard(true);
+                  }}
+                  className="li-suggestion-list"
+                  key={movie.id}
+                >
                   {movie.title}
                 </li>
               ))

@@ -103,6 +103,7 @@ export default function HomeScreen() {
   const [isLight, setIsLight] = useState(false);
   const [selectedFavorites, setSelectFavorites] = useState<boolean>(false);
   const { favorites } = useFavorites();
+  const [searchText, setSearchText] = useState<string>("");
   const apiKey = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
@@ -115,28 +116,28 @@ export default function HomeScreen() {
             genresArray.find((genre) => genre.id === selectedGenreId)?.name ||
             "Genre";
           const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${selectedGenreId}`,
+            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&without_genres=99&without_genres=18&without_genres=10749&adult=false&with_genres=${selectedGenreId}`,
           );
           const data = await response.json();
           setcategoryTitle(`${genreName}`);
           setMovies(data.results);
         } else if (selectedYears !== null) {
           const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=${selectedYears}`,
+            `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=${selectedYears}&without_genres=99&without_genres=18&without_genres=10749&adult=false`,
           );
           const data = await response.json();
           setcategoryTitle(`${selectedYears}`);
           setMovies(data.results);
         } else if (selectedPopular) {
           const response = await fetch(
-            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`,
+            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&without_genres=99&without_genres=18&without_genres=10749&adult=false`,
           );
           const data = await response.json();
           setcategoryTitle("Populaire");
           setMovies(data.results);
         } else if (selectedNews) {
           const response = await fetch(
-            `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`,
+            `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&without_genres=99&without_genres=18&without_genres=10749&adult=false`,
           );
           const data = await response.json();
           setcategoryTitle("Film à l'affiche");
@@ -147,7 +148,7 @@ export default function HomeScreen() {
         } else {
           const randomPage = Math.floor(Math.random() * 499) + 1;
           const response = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?adult=false&page=${randomPage}&api_key=${apiKey}`,
+            `https://api.themoviedb.org/3/discover/movie?page=${randomPage}&api_key=${apiKey}&without_genres=99&without_genres=18&without_genres=10749&adult=false`,
           );
           const data = await response.json();
           const shuffledResults = data.results.sort(() => 0.5 - Math.random());
@@ -172,10 +173,29 @@ export default function HomeScreen() {
   const [genres, setGenres] = useState<{ [key: number]: string }>({});
 
   useEffect(() => {
+    const handleSearchResult = async () => {
+      setSelectGenreId(null);
+      setSelectYears(null);
+      setSelectPopular(false);
+      setSelectNews(false);
+      setSelectFavorites(false);
+
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchText}&without_genres=99&without_genres=18&without_genres=10749&adult=false`,
+      );
+      const data = await response.json();
+      setcategoryTitle(`Résultat de recherche pour "${searchText}"`);
+      setMovies(data.results);
+    };
+
+    handleSearchResult();
+  }, [searchText]);
+
+  useEffect(() => {
     const fetchGenres = async () => {
       try {
         const response = await fetch(
-          `https://api.themoviedb.org/3/genre/movie/list?language=fr&api_key=${apiKey}`,
+          `https://api.themoviedb.org/3/genre/movie/list?language=fr&api_key=${apiKey}&without_genres=99&without_genres=18&without_genres=10749`,
         );
         const data = await response.json();
         const genreMap: { [key: number]: string } = {};
@@ -221,69 +241,82 @@ export default function HomeScreen() {
 
   return (
     <>
-      <nav>
-        <h1 className="site-title">CinéWild</h1>
-        <ButtonBurger
-          setSelectGenreId={setSelectGenreId}
-          setSelectYears={setSelectYears}
-          setSelectPopular={setSelectPopular}
-          setSelectNews={setSelectNews}
-          setIsLight={setIsLight}
-          setSelectFavorites={setSelectFavorites}
-        />
-      </nav>
-      <section className="suggestion-section">
-        <div className="intro-section">
-          <h2 className="intro-sentence">
-            Découvrez votre prochain <span>film préféré</span>
-          </h2>
-          <div className="home-searchbar">
-            <FilmSearchBar />
+      <div className="other-than-footer">
+        <nav>
+          <h1 className="site-title">CinéWild</h1>
+          <ButtonBurger
+            setSelectGenreId={setSelectGenreId}
+            setSelectYears={setSelectYears}
+            setSelectPopular={setSelectPopular}
+            setSelectNews={setSelectNews}
+            setIsLight={setIsLight}
+            setSelectFavorites={setSelectFavorites}
+          />
+        </nav>
+        <section className="suggestion-section">
+          <div className="intro-section">
+            <h2 className="intro-sentence">
+              Découvrez votre prochain <span>film préféré</span>
+            </h2>
+            <div className="home-searchbar">
+              <FilmSearchBar
+                setShowCard={setShowCard}
+                setIdMovie={setIdMovie}
+                setSearchResult={setSearchText}
+              />
+            </div>
           </div>
-        </div>
-        <div className="tendance">
-          <h3 className="tendance-title">{categoryTitle}</h3>
-        </div>
-        <div className="tendance-grid">
-          {movies.map((movie) => {
-            const genreNames = movie.genre_ids
-              ? movie.genre_ids
-                  .slice(0, 2)
-                  .map((id) => genres[id])
-                  .join(", ")
-              : "";
-            return (
-              <div
-                key={movie.id}
-                onClick={() => {
-                  setShowCard(true);
-                  setIdMovie(movie.id);
-                  handleScrollToTop();
-                }}
-                onKeyDown={() => {
-                  setShowCard(true);
-                  setIdMovie(movie.id);
-                }}
-              >
-                <MiniCard
-                  id={movie.id}
-                  title={movie.title}
-                  poster_path={movie.poster_path}
-                  genre={genreNames}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </section>
-      {showCard && (
-        <>
-          <Background />
-          <Card id={idMovie} showCard={true} setShowCard={setShowCard} />
-        </>
-      )}
-      <div className="footer">
+          <div className="tendance">
+            <h3 className="tendance-title">{categoryTitle}</h3>
+          </div>
+          <div className="tendance-grid">
+            {movies.length > 0 ? (
+              movies.map((movie) => {
+                const genreNames = movie.genre_ids
+                  ? movie.genre_ids
+                      .slice(0, 2)
+                      .map((id) => genres[id])
+                      .join(", ")
+                  : "";
+                return (
+                  <div
+                    key={movie.id}
+                    onClick={() => {
+                      setShowCard(true);
+                      setIdMovie(movie.id);
+                      handleScrollToTop();
+                    }}
+                    onKeyDown={() => {
+                      setShowCard(true);
+                      setIdMovie(movie.id);
+                    }}
+                  >
+                    <MiniCard
+                      id={movie.id}
+                      title={movie.title}
+                      poster_path={movie.poster_path}
+                      genre={genreNames}
+                    />
+                  </div>
+                );
+              })
+            ) : (
+              <>
+                <h6 className="empty-list-text">Aucun film trouvé</h6>
+              </>
+            )}
+          </div>
+        </section>
+        {showCard && (
+          <>
+            <Background />
+            <Card id={idMovie} showCard={true} setShowCard={setShowCard} />
+          </>
+        )}
+      </div>
+      <footer>
         <div />
+        <p>Made by wilders with ❤️</p>
         <button
           type="button"
           className="open-modale"
@@ -297,13 +330,12 @@ export default function HomeScreen() {
         >
           CONTACT
         </button>
-        <p>Made by wilder</p>
-      </div>
 
-      <ModalContactForm
-        isContactOpen={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
+        <ModalContactForm
+          isContactOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+        />
+      </footer>
     </>
   );
 }

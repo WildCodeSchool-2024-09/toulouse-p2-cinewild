@@ -1,11 +1,5 @@
 import "../assets/styles/miniCard.css";
-
-interface MiniCardProps {
-  id: number;
-  title: string;
-  poster_path: string;
-  genre: string;
-}
+import type { MiniCardProps } from "../types/interface";
 
 export default function MiniCard({ title, poster_path, genre }: MiniCardProps) {
   return (
@@ -21,9 +15,7 @@ export default function MiniCard({ title, poster_path, genre }: MiniCardProps) {
           alt="film poster"
         />
         <h2 className="title">{title}</h2>
-        <div className="description">
-          <p className="types">{genre}</p>
-        </div>
+        <p className="types">{genre}</p>
       </div>
     </>
   );

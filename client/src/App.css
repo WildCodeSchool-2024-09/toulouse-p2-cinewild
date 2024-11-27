@@ -19,3 +19,10 @@
 h1 {
   font-family: "Bebas Neue", sans-serif;
 }
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

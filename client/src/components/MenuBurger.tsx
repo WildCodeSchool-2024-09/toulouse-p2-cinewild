@@ -1,6 +1,5 @@
 import "../assets/styles/MenuBurger.css";
 import { useState } from "react";
-import FavoritesPage from "./FavoritesPage";
 import Genre from "./Genre";
 import Annee from "./Years";
 import "../App.css";
@@ -27,8 +26,6 @@ export default function MenuBurger({
   const [isGenreOpen, setIsGenreOpen] = useState(false);
   const [isOpenYear, setisOpenYear] = useState(false);
   const [isOpenDark, setIsOpenDark] = useState(false);
-
-  const [isOpenFavorite] = useState(false);
   return (
     <>
       {!isGenreOpen === true && !isOpenYear === true && (
@@ -147,7 +144,6 @@ export default function MenuBurger({
           setIsOpen={setIsOpen}
         />
       )}
-      {isOpenFavorite && <FavoritesPage setIsOpen={setIsOpen} />}
     </>
   );
 }
