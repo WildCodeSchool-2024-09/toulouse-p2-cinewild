@@ -5,9 +5,11 @@
     "check-types": "tsc --noEmit",
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "fix": "npx @biomejs/biome check --write ."
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.26.2"

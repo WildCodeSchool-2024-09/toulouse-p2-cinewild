@@ -1,0 +1,75 @@
+import { useState } from "react";
+import "../assets/styles/Genre.css";
+import type { GenreItemsProps } from "../types/interface";
+interface OpenProps {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  setSelectGenreId: React.Dispatch<React.SetStateAction<number | null>>;
+  setIsOpenM: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export default function Genre({
+  isOpen,
+  setIsOpen,
+  setSelectGenreId,
+  setIsOpenM,
+}: OpenProps) {
+  const apiKey = import.meta.env.VITE_API_KEY;
+  const [genreList, setGenreList] = useState<Array<GenreItemsProps>>([]);
+
+  async function getGenreList() {
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/genre/movie/list?language=fr&api_key=${apiKey}&without_genres=99&without_genres=10749&without_genres=18`,
+      );
+
+      const data = await response.json();
+
+      const genres = data.genres;
+
+      setGenreList(genres);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des données :", error);
+    }
+  }
+
+  getGenreList();
+
+  return (
+    isOpen && (
+      <div className="buttons-genre">
+        <img
+          src="../src/assets/images/return.png"
+          alt="retour"
+          onClick={() => setIsOpen(false)}
+          onKeyDown={() => setIsOpen(false)}
+          className="return"
+        />
+
+        <h2 className="genre-title-categorie">
+          Genre
+          <img
+            className="logo-button-genre"
+            src="../src/assets/images/genre.png"
+            alt="genre"
+          />
+        </h2>
+        {genreList.map((genre) => {
+          return (
+            <button
+              key={genre.id}
+              className="button-genre"
+              type="button"
+              onClick={() => {
+                setSelectGenreId(genre.id);
+                setIsOpenM(false);
+              }}
+            >
+              {genre.name}
+            </button>
+          );
+        })}
+      </div>
+    )
+  );
+}

@@ -1,0 +1,271 @@
+footer {
+  width: 100%;
+  padding: 5vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4c4848;
+  border-top: 1px solid white;
+}
+
+footer button {
+  border-radius: 1vw;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  padding-inline: 5vw;
+}
+
+.modal-content {
+  width: 90%;
+  background-color: #1a1a1a;
+  padding-inline: 10vw;
+  border-radius: 8px;
+  max-height: 90vh;
+}
+
+.modal-close-button {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  font-size: 8vw;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-top: 3vw;
+}
+
+.open-modale {
+  display: flex;
+  justify-content: end;
+  padding: 2vw;
+  color: #525252;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  border: none;
+}
+footer p {
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+.open-modale:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.formulaire input {
+  padding: 1vw 2vw;
+  border: none;
+  border-radius: 2vw;
+  color: white;
+}
+
+.formName,
+.formLastName {
+  width: 45%;
+  background-color: #312f2f;
+}
+
+.contact-modal-title {
+  color: #dbd8d8;
+  text-align: center;
+  margin-bottom: 8vw;
+}
+
+.nameLastname {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4vw;
+}
+
+.form-email {
+  width: 100%;
+  background-color: #312f2f;
+  margin-bottom: 4vw;
+}
+
+div.footer > span.open-modale {
+  cursor: pointer;
+}
+
+.form-msg {
+  width: 100%;
+  padding-bottom: 20vw !important;
+  background-color: #312f2f;
+  margin-bottom: 5vw;
+}
+
+.submitdiv {
+  margin: 0 auto;
+}
+
+.submit-btn {
+  background-color: var(--secondary-color);
+  margin-bottom: 5vw;
+  color: #dbd8d8;
+  font-weight: 700;
+}
+
+@media screen and (width > 600px) {
+  .modal-content {
+    padding-inline: 8vw;
+    border-radius: 3vw;
+  }
+
+  .modal-close-button {
+    width: 100%;
+    font-size: 6vw;
+  }
+
+  .formulaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .formulaire input {
+    border-radius: 1vw;
+  }
+
+  .formName,
+  .formLastName {
+    width: 45%;
+    background-color: #312f2f;
+  }
+
+  .contact-modal-title {
+    color: #dbd8d8;
+    text-align: center;
+    margin-bottom: 8vw;
+  }
+
+  .nameLastname {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4vw;
+  }
+
+  .form-email {
+    width: 100%;
+    background-color: #312f2f;
+    margin-bottom: 4vw;
+  }
+
+  .form-msg {
+    width: 100%;
+    background-color: #312f2f;
+    margin-bottom: 5vw;
+  }
+
+  .submitdiv {
+    margin: 0 auto;
+  }
+
+  .submit-btn {
+    background-color: var(--secondary-color);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  footer {
+    height: 6vw;
+  }
+  .open-modale {
+    font-size: smaller;
+  }
+
+  .modal-content {
+    width: max(90%, 900px);
+    background-color: #1a1a1a;
+    padding-inline: 10vw;
+    border-radius: 8px;
+    margin-top: 0;
+    overflow: scroll;
+  }
+
+  .modal-close-button {
+    font-size: 5vw;
+  }
+
+  .formulaire {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .formulaire input {
+    padding: 1vw 2vw;
+    border: none;
+    border-radius: 1vw;
+    color: white;
+  }
+
+  .formName,
+  .formLastName {
+    width: 45%;
+    background-color: #312f2f;
+  }
+
+  .contact-modal-title {
+    color: #dbd8d8;
+    text-align: center;
+    margin-bottom: 8vw;
+  }
+
+  .nameLastname {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4vw;
+  }
+
+  .form-email {
+    width: 100%;
+    background-color: #312f2f;
+    margin-bottom: 4vw;
+  }
+
+  .form-msg {
+    width: 100%;
+    padding-bottom: 20vw !important;
+    background-color: #312f2f;
+    margin-bottom: 5vw;
+  }
+
+  .submitdiv {
+    margin: 0 auto;
+  }
+
+  .submit-btn {
+    background-color: var(--secondary-color);
+    margin-bottom: 5vw;
+    color: #dbd8d8;
+    font-weight: 700;
+  }
+}

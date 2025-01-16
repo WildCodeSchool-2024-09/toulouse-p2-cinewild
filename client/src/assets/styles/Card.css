@@ -1,0 +1,267 @@
+.modale {
+  background-color: var(--black-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  position: absolute;
+  width: 90vw;
+  margin-left: 5vw;
+  border-radius: 14px;
+  color: var(--text-color);
+  border: 1px solid rgba(219, 216, 216, 0.5);
+  margin-top: 5vw;
+  padding-bottom: 4vw;
+  z-index: 99;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+}
+
+.details-film-section {
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin-inline: 3%;
+}
+
+.details-film-section h3 {
+  font-size: 4vw;
+  font-weight: 400;
+  color: #a4a4a4;
+}
+
+.details-film-section p {
+  font-size: 4vw;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.film-detail-title {
+  font-size: 7vw;
+  margin-block: 5vw;
+}
+
+.film-genre {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2vw;
+  margin-bottom: 2vw;
+}
+
+.film-genre button {
+  border-radius: 5vw;
+  padding: 2vw 3vw;
+  font-size: 3.3vw;
+  border: none;
+  background-color: #5a2323;
+  color: white;
+}
+
+.film-genre button:hover {
+  background-color: #531c1c;
+}
+
+.first-part-details {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 3vw;
+  width: 100%;
+  padding-inline: 7%;
+}
+
+.detail-film-note {
+  margin-bottom: 2vw;
+  padding-inline: 7%;
+}
+
+.resume {
+  margin-bottom: 10vw;
+  padding-inline: 7%;
+}
+
+.button-plus {
+  border: none;
+  background: none;
+  color: var(--text-color);
+}
+
+.button-close {
+  background-color: #e44a35;
+  color: var(--text-color);
+  border: none;
+  border-radius: 10px;
+  height: 10vw;
+  width: 50vw;
+  font-weight: 700;
+  font-size: 4vw;
+}
+
+.favorite-button {
+  margin-top: 5vw;
+}
+
+.emptyheart {
+  width: 7vw;
+  height: auto;
+}
+
+.fullheart {
+  width: 7vw;
+  height: auto;
+}
+
+.favorite-button {
+  background-color: transparent;
+  border: none;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.cardtitle {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (width > 500px) {
+  .modale {
+    width: 70vw;
+    margin-left: 15vw;
+  }
+
+  .details-film-section {
+    margin-inline: 1%;
+  }
+
+  .details-film-section h3 {
+    font-size: 3vw;
+  }
+
+  .details-film-section p {
+    font-size: 3vw;
+  }
+
+  .film-detail-title {
+    font-size: 5vw;
+    margin-block: 4vw;
+  }
+
+  .film-genre button {
+    font-size: 2.5vw;
+  }
+
+  .button-close {
+    font-size: 3vw;
+    height: 8vw;
+    width: 30vw;
+  }
+
+  .favorite-button {
+    margin-top: 4vw;
+  }
+
+  .emptyheart {
+    width: 4vw;
+    height: auto;
+  }
+
+  .fullheart {
+    width: 4vw;
+    height: auto;
+  }
+}
+
+@media screen and (width > 900px) {
+  .modale {
+    width: 90vw;
+    margin-left: 5vw;
+    display: flex;
+    flex-direction: row;
+    height: 50vw;
+  }
+
+  .film-genre {
+    gap: 1vw;
+    margin-bottom: 1vw;
+    gap: 0px;
+  }
+
+  .details-film-section h3 {
+    font-size: 2vw;
+  }
+
+  .details-film-section p {
+    font-size: 2vw;
+  }
+
+  .film-detail-title {
+    font-size: 3.5vw;
+    margin-block: 4vw;
+  }
+
+  .film-genre button {
+    font-size: 2vw;
+    padding: 1vw 2vw;
+  }
+
+  .resume {
+    margin-bottom: 5vw;
+  }
+
+  .button-close {
+    font-size: 2vw;
+    height: 6vw;
+    width: 25vw;
+  }
+  .details-film-section {
+    padding: 20px;
+  }
+
+  .details-film-section h3 {
+    font-size: 1vw;
+  }
+
+  .details-film-section p {
+    font-size: 1.1vw;
+  }
+
+  .film-detail-title {
+    font-size: 2vw;
+    margin-left: 3vw;
+  }
+
+  .film-genre button {
+    font-size: 1vw;
+    margin-left: 3vw;
+  }
+
+  .button-close {
+    font-size: 1vw;
+    height: 3vw;
+    width: 20vw;
+    margin-top: 45vw;
+    margin-left: 55vw;
+    position: absolute;
+  }
+  .image {
+    width: auto;
+    height: 130%;
+  }
+
+  .favorite-button {
+    margin-top: 3vw;
+  }
+
+  .emptyheart {
+    width: 3vw;
+    height: auto;
+  }
+
+  .fullheart {
+    width: 3vw;
+    height: auto;
+  }
+}
