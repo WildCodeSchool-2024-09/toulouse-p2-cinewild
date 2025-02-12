@@ -4,8 +4,8 @@ import Background from "./Background";
 import ButtonBurger from "./ButtonBurger";
 import Card from "./Card";
 import FilmSearchBar from "./FilmSearchBar";
-import MiniCard from "./MiniCard";
 import ModalContactForm from "./ModalContactForm";
+import TinyCard from "./TinyCard";
 import "../assets/styles/ModalContactForm.css";
 import { useFavorites } from "../context/FavoritesContext";
 import type { Movie } from "../types/interface";
@@ -291,7 +291,7 @@ export default function HomeScreen() {
                       setIdMovie(movie.id);
                     }}
                   >
-                    <MiniCard
+                    <TinyCard
                       id={movie.id}
                       title={movie.title}
                       poster_path={movie.poster_path}
