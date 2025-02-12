@@ -1,7 +1,7 @@
-import "../assets/styles/miniCard.css";
+import "../assets/styles/TinyCard.css";
 import type { MiniCardProps } from "../types/interface";
 
-export default function MiniCard({ title, poster_path, genre }: MiniCardProps) {
+export default function TinyCard({ title, poster_path, genre }: MiniCardProps) {
   return (
     <>
       <div className="mini-card">
